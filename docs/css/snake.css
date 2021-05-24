@@ -22,9 +22,9 @@ player {
 }
 
 .red {
-    background-color: var(--primary-color);
+    background-color: var(--tertiary-color);
 }
 
 .blue {
-    background-color: var(--primary-color-dark) !important;
+    background-color: var(--primary-color) !important;
 }
