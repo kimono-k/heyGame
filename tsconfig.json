@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
-        "strict": true,
-        "noImplicitAny": true,
-        "noImplicitThis": true,
+        "allowUnusedLabels": true,
+        "noImplicitReturns": true,
+        "noImplicitAny": false,
         "strictPropertyInitialization": false,
         "target": "es6",
         "removeComments": true,
