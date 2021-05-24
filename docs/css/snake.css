@@ -1,3 +1,5 @@
+@import "style.css";
+
 background {
     z-index: -1;
     background-image: url('../assets/img/snake/background.jpg');
@@ -20,9 +22,9 @@ player {
 }
 
 .red {
-    background-color: red;
+    background-color: var(--primary-color);
 }
 
 .blue {
-    background-color: blue !important;
+    background-color: var(--primary-color-dark) !important;
 }
