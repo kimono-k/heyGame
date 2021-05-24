@@ -1,0 +1,15 @@
+background {
+    z-index: -1;
+    background-image: url('../assets/img/snake/background.jpg');
+    background-position: bottom center;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+
+player {
+    background-image: url('../assets/img/snake/player.jpg');
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 100px;
+}

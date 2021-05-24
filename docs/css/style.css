@@ -1,0 +1,85 @@
+:root{
+
+    /* Accent Colors */
+    --primary-color-dark:   hsl(198, 100%, 35%);
+    --primary-color:        #00b3ff;
+    --primary-color-light:  hsl(198, 100%, 65%);
+
+    --secondary-color-dark: hsl(109, 60%, 35%);
+    --secondary-color:      #4fcc33;
+    --secondary-color-light:hsl(109, 60%, 65%);
+
+    --tertiary-color-dark:  hsl(357, 76%, 35%);
+    --tertiary-color:       #e01f28;
+    --tertiary-color-light: hsl(357, 76%, 65%);
+
+    /* Dark Theme */
+
+    /* --bg-color:             hsl(225, 8%, 7%);
+
+    --surface-color-dark:   hsl(225, 8%, 11%);
+    --surface-color:        hsl(225, 8%, 15%);
+    --surface-color-light:  hsl(225, 8%, 20%);
+
+    --error-color:          hsl(346, 91%, 26%);
+
+    --onsurface-color:      var(--white1);
+    --onsurface-color2:     var(--white2);
+    --onsurface-color3:     var(--white3);
+
+    --onprimary-color:      var(--white1);
+    --onprimary-color2:     var(--white2);
+    --onprimary-color3:     var(--white3); */
+
+    /* Light Theme */
+
+    --bg-color:             #f1f2f3;
+
+    --surface-color-dark:   #e3e4e8;
+    --surface-color:        hsl(230, 8%, 85%);
+    --surface-color-light:  hsl(225, 8%, 80%);
+
+    --error-color:          hsl(354, 62%, 39%);
+
+    --onsurface-color:      var(--black1);
+    --onsurface-color2:     var(--black2);
+    --onsurface-color3:     var(--white3);
+
+    --onprimary-color:      var(--white1);
+    --onprimary-color2:     var(--white2);
+    --onprimary-color3:     var(--white3);
+
+    /* Default blackwhite */
+
+    --white1:               #FFFFFFdd;
+    --white2:               #FFFFFF99;
+    --white3:               #FFFFFF60;
+
+    --black1:               #000000dd;
+    --black2:               #00000099;
+    --black3:               #00000060;
+    
+}   
+
+body {
+    margin: 0;
+    padding: 0;
+
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+
+    color: var(--onsurface-color);
+    background-color: var(--bg-color);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+background, player, ui {
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+}
+
+
+
+/* Button */
