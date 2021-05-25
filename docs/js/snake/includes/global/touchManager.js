@@ -13,6 +13,7 @@ export class TouchManager extends NodeEventGenerator {
         this.swipeTreshold = swipeTreshold;
     }
     onTouchEventDown(e) {
+        e.preventDefault();
         this.onTouchDown(e.changedTouches[0]);
     }
     onTouchDown(e) {
@@ -44,6 +45,7 @@ export class TouchManager extends NodeEventGenerator {
         this.trigger('touchUp', { 'touchEvent': e });
     }
     onTouchEventMove(e) {
+        e.preventDefault();
         for (let t of e.changedTouches) {
             if (t.identifier == this.trackId) {
                 this.onTouchMove(t);
