@@ -16,6 +16,10 @@ player {
     height: 100px;
 }
 
+body {
+    max-height: 100%;
+    overflow: hidden;
+}
 
 .gameComp {
     position: absolute;
