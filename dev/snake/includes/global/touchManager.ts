@@ -9,7 +9,7 @@ interface Touch {
     pageY:number;
 };
 
-export class TouchManager extends NodeEventGenerator{
+export class TouchManager extends NodeEventGenerator {
     downEvent: Touch;
     // saves Vector indicating dir of last swipe, pos of last tap and pos of last move
     lastTap: Vector;
