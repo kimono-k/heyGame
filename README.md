@@ -6,12 +6,17 @@ edit to update pages
 ### General (v0.1)
 
 v0.1
+updated readmin
 added changelog
 
 v0
 init file structure
 
 ### Snake
+
+v0.1
+
+v0 
 
 ### Breakout
 
@@ -21,15 +26,32 @@ added breakout uml
 v0 
 added first code
 
+## General
 
-## UML Breakout
+### Links
+https://luukftf.github.io/heyGame/
+
+### Technical Structure
+
+![](/readme/img/technicaldesign.jpg)
+
+### Git Quick Refrence
+
+https://github.com/LuukFTF/knowledgebase/blob/master/articles/development/git.md
+
+## Breakout
+
+### UML
+
+![](/readme/img/UML_breakout.jpg)
 
 ```ts
 
 - class Game {
-    + globalScore : number
-    + levelType : number = 1
-    + level : number = 1
+    - globalScore : number
+    - levelType : number = 1
+    - levelNumber : number = 1
+    - level : Level
     |
     constructor() {
         startLevel(level)
@@ -38,145 +60,162 @@ added first code
     - gameLoop() {
         Level.update()
     }
-    - checkCollision(a : ClientRect, b : ClientRest) : boolean
-    + changeglobalScore(amount : number)
-    + changeLives(amount : number)
-    + startLevel(level : number) { new Level(level) }
+    - checkCollision(a : ClientRect, b : ClientRect) : boolean
+    + changeglobalScore(amount : number) : void
+
+    - startLevel(level : number) : void { new Level(level) }
     |
     has class Level {
-        + score : number
-        + promptText : string
-        + nextPromptText : string
-        + correctItem : string
-        + lives : number = 3
+        - score : number
+        - promptText : string
+        - nextPromptText : string
+        - correctItem : string
+        - correctAmount : number
+        - lives : number = 3
         - gameOver : boolean = false
-        + levelType : number = 1
-        + level : number = 1
+        - levelType : number = 1
+        - level : number = 1
+        - border : Border
+        - paddle : Paddle
+        - ball : Ball
+        - brickGrid : BrickGrid
         |
         constructor(level) {
             init(level)
         }
         |
         - init(level : number) { switchcase levelinit 1 2 3 }
-        + update() {
+        + update() : void {
             Paddle.update()
             Ball.update()
             Grid.update()
             array Brick123.update()
         }
-    }
-    |
-    has class Border {
-        - element : HTMLElement
-        - posX : number
-        - posY : number
-        - xsize : number
-        - ysize : number
-        - innerWith : number
-        - innerHeight : number
+        + reset() : void {delete all > init()}
+        + end() : void
+        + gameOver() : void
+        + finnish() : void
+        + changeLives(amount : number) : void
+        + changeScore(amount : number) : void
         |
-        + spawn()
-        + update()
-        + reset()
-    }
-    |
-    has class Paddle {
-        - element : HTMLElement
-        - posX : number = clientWidth / 2
-        - posY : number = clientHeight - 10
-        - speedX : number
-        - speedY : number
-        - inputLeft : number = 65
-        - inputRight : number = 68
-        - inputUse : number
-        - sticky : boolean = false
-        |
-        + spawn()
-        + update()
-        + reset()
-        - onKeyUp()
-        - onKeyDown()
-        + checkBorderCollision()
-        + getRectangle()
-        + getFutureRectangle()
-    }
-    |
-    has class Ball {
-        - element : HTMLElement
-        - posX : number
-        - posY : number
-        - speedX : number
-        - speedY : number
-        |
-        + spawn()
-        + update()
-        + reset()
-        + checkBorderCollision()
-        + checkPaddleCollision()
-        + checkBrickCollision()
-        + bounceX()
-        + bounceY()
-        + toggleStick()
-        + getRectangle()
-        + getFutureRectangle()
-    }
-    |
-    has class Grid {
-        - element : HTMLElement
-        - posX : number
-        - posY : number
-        - xsize : number
-        - ysize : number
-        - rows : number
-        - columns : number
-        |
-        + spawn()
-        + update()
-        + reset()
-        + getRectangle()
-        |
-        has class Brick {
+        has class Border {
             - element : HTMLElement
-            - row  : number
-            - column : number
-            - itemtype : string
-            - item : string
-            - color : string
-            - breakstatus : number{0-2}
-            - hidden : boolean
+            - posX : number
+            - posY : number
+            - xsize : number
+            - ysize : number
+            - innerWith : number
+            - innerHeight : number
             |
-            constructor(row : number, column : number, breakstatus : number{0-2} = 2, color : string = blue, itemtype : default, item : string, hidden : boolean = false) {
-                spawn()
-            }
+            + spawn() : void
+            + update() : void
+            + reset() : void
+        }
+        |
+        has class Paddle {
+            - element : HTMLElement
+            - posX : number = clientWidth / 2
+            - posY : number = clientHeight - 10
+            - speedX : number
+            - speedY : number
+            - inputLeft : number = 65
+            - inputRight : number = 68
             |
-            + spawn()
-            + update()
-            + reset()
-            + hit()
-            + break()
-            + checkItem()
-            + getRectangle()
+            + spawn() : void
+            + update() : void
+            + reset() : void
+            - onKeyUp()
+            - onKeyDown()
+            + checkBorderCollision()
+            + getRectangle() : ClientRect
+            + getFutureRectangle() : ClientRect
+        }
+        |
+        has class Ball {
+            - element : HTMLElement
+            - posX : number
+            - posY : number
+            - speedX : number
+            - speedY : number
+            - sticky : boolean = false
+            - inputUse : number
             |
-            has class FallingItem {
+            + spawn() : void
+            + update() : void
+            + reset() : void
+            + checkBorderCollision()
+            + checkPaddleCollision()
+            + checkBrickCollision()
+            + bounceX() : void
+            + bounceY() : void
+            + toggleStick() : void
+            - onKeyUp()
+            - onKeyDown()
+            + getRectangle() : ClientRect
+            + getFutureRectangle() : ClientRect
+        }
+        |
+        has class BrickGrid {
+            - element : HTMLElement
+            - posX : number
+            - posY : number
+            - xsize : number
+            - ysize : number
+            - rows : number
+            - columns : number
+            - bricks : Brick[]
+            |
+            + spawn() : void
+            + update() : void
+            + reset() : void
+            + getRectangle() : ClientRect
+            |
+            has class Brick {
                 - element : HTMLElement
+                - row  : number
+                - column : number
+                - itemtype : string
                 - item : string
-                - posX : number
-                - posY : number
-                - speedX : number
-                - speedY : number
+                - color : string
+                - breakstatus : number{0-2}
+                - hidden : boolean
+                - fallingItem : FallingItem
                 |
-                + spawn()
-                + update()
-                + reset()
-                + checkPaddleCollision()
-                + pickup()
-                + getRectangle()
-                + getFutureRectangle()
+                constructor(row : number, column : number, breakstatus : number{0-2} = 2, color : string = blue, itemtype : default, item : string, hidden : boolean = false) {
+                    spawn()
+                }
+                |
+                + spawn() : void
+                + update() : void
+                + reset() : void
+                + hit() : void
+                + break() : void
+                + checkItem()
+                + getRectangle() : ClientRect
+                |
+                has class FallingItem {
+                    - element : HTMLElement
+                    - item : string
+                    - posX : number
+                    - posY : number
+                    - speedX : number
+                    - speedY : number
+                    |
+                    + spawn() : void
+                    + update() : void
+                    + reset() : void
+                    + checkPaddleCollision()
+                    + pickup() : void
+                    + getRectangle() : ClientRect
+                    + getFutureRectangle() : ClientRect
+                }
             }
         }
     }
 }
 
-
-
 ```
+
+## Snake
+
+### UML
