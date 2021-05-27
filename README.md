@@ -1,6 +1,26 @@
 # heyGame
 edit to update pages
 
+## Changelog
+
+### General (v0.1)
+
+v0.1
+added changelog
+
+v0
+init file structure
+
+### Snake
+
+### Breakout
+
+v0.1
+added breakout uml
+
+v0 
+added first code
+
 
 ## UML Breakout
 
