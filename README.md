@@ -6,11 +6,11 @@ edit to update pages
 ### General (v0.1)
 
 v0.1
-updated readmin
-added changelog
+- updated readmin
+- added changelog
 
 v0
-init file structure
+- init file structure
 
 ### Snake
 
@@ -21,10 +21,10 @@ v0
 ### Breakout
 
 v0.1
-added breakout uml
+- added breakout uml
 
 v0 
-added first code
+- added first code
 
 ## General
 
