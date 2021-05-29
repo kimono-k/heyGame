@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-
-=======
 # heyGame
 edit to update pages
 
@@ -222,4 +219,3 @@ https://github.com/LuukFTF/knowledgebase/blob/master/articles/development/git.md
 ## Snake
 
 ### UML
->>>>>>> b5b7e097aa840247903448836d69a1193dfbf97f
