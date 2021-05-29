@@ -32,7 +32,7 @@ export class DivNode extends BaseNode {
 
     set pos(pos: Vector) {
         this.position = pos;
-        this.updateElement;
+        this.updateElement();
     }
 
     get pos() {

@@ -16,6 +16,8 @@ init file structure
 
 v0.1
 
+snake moves
+
 v0 
 
 ### Breakout

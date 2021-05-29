@@ -9,11 +9,12 @@ background {
     height: 100vh;
 }
 
-player {
-    background-image: url('../assets/img/snake/player.jpg');
-    background-repeat: no-repeat;
-    width: 100px;
-    height: 100px;
+snakeSegment {
+    background-color: var(--primary-color);
+    border: 4px solid var(--primary-color-dark);
+    border-radius: 100px;
+    width: 80px;
+    height: 80px;
 }
 
 body {

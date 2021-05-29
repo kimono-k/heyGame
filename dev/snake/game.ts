@@ -3,12 +3,13 @@ import { Vector } from "./includes/vector.js";
 import { InputManager } from "./includes/global/inputManager.js";
 import { CollisionNode } from "./includes/physics/collisionNode.js";
 import { TouchManager } from "./includes/global/touchManager.js";
+import { NodeEventGenerator } from "./includes/global/nodeEventGenerator.js";
 
 interface CollIdCollection {
     [collId: number]: CollisionNode
 }
 
-export class Game {
+export class Game extends NodeEventGenerator {
     root: BaseNode;
     collisionNodes: CollIdCollection = {};
 
@@ -29,6 +30,7 @@ export class Game {
     collCounter = 0;
 
     constructor(gameDiv: HTMLElement) {
+        super();
         this.gameDiv = gameDiv;
         this.initInput();
         console.log('game constructed!');
@@ -75,7 +77,9 @@ export class Game {
             // this.frameElement.innerText = this.frameRate;
         }
 
+        this.trigger('update');
         this.root.loop(this.delta);
+        this.trigger('late_update');
         this.physicsUpdate();
         this.render();
         this.input.update();
