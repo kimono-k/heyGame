@@ -34,6 +34,9 @@ export class Vector {
     pow(n) {
         return new Vector(Math.pow(this.x, n), Math.pow(this.y, n));
     }
+    lerp(v, percentage) {
+        return new Vector(this.x + (percentage * (v.x - this.x)), this.y + (percentage * (v.y - this.y)));
+    }
     get length() {
         return Math.sqrt(this.x * this.x + this.y * this.y);
     }
