@@ -18,6 +18,10 @@ v0.1
 
 snake moves
 
+V0.2
+
+snake's direction can be changed by swiping
+
 v0 
 
 ### Breakout

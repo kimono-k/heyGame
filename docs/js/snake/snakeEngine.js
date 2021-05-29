@@ -13,16 +13,25 @@ export class SnakeEngine extends Game {
         this.snakePos = [];
         this.snakeTarget = [];
         this.snakeDivs = [];
-        this.moveTime = 1;
+        this.moveTime = 0.7;
         this.moveTimer = 0;
         this.map = new Array(this.h).fill(new Array(this.w).fill('0'));
         let root = new BaseNode();
         root.addChild(this.createSnakeSegment(new Vector(3, 3)));
         root.addChild(this.createSnakeSegment(new Vector(4, 3)));
         root.addChild(this.createSnakeSegment(new Vector(5, 3)));
+        root.addChild(this.createSnakeSegment(new Vector(6, 3)));
         this.rootNode = root;
+        this.touch.connect('swiped', this, this.swipeHandler);
         this.connect('update', this, this.snakeUpdate);
         this.calcTarget(this);
+    }
+    swipeHandler(self, data) {
+        let touchDiff = data['swipe'];
+        let touchX = (Math.abs(touchDiff.x) > Math.abs(touchDiff.y))
+            ? Math.sign(touchDiff.x) : 0;
+        let touchY = (Math.abs(touchDiff.x) < Math.abs(touchDiff.y)) ? Math.sign(touchDiff.y) : 0;
+        self.snakeDir = new Vector(touchX, touchY);
     }
     createSnakeSegment(pos) {
         let snake = new DivNode(pos.multiply(this.segmentSize), this.segmentSize, 'snakeSegment');
