@@ -6,31 +6,29 @@ edit to update pages
 ### General (v0.1)
 
 v0.1
-updated readmin
-added changelog
+- added button styling
+- updated readme
+- added changelog
 
 v0
-init file structure
+- init file structure
 
 ### Snake
 
 v0.1
 
-snake moves
-
-V0.2
-
-snake's direction can be changed by swiping
+- snake's direction can be changed by swiping
+- snake moves
 
 v0 
 
 ### Breakout
 
 v0.1
-added breakout uml
+- added breakout uml
 
 v0 
-added first code
+- added first code
 
 ## General
 
