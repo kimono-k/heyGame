@@ -142,5 +142,9 @@ export class Game extends NodeEventGenerator {
         this.root = root;
         root.game = this;
     }
+
+    get rootNode() {
+        return this.root;
+    }
 }
 
