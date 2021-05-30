@@ -6,7 +6,8 @@ edit to update pages
 ### General (v0.1)
 
 v0.1
-- updated readmin
+- added button styling
+- updated readme
 - added changelog
 
 v0
