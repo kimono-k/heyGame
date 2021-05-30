@@ -23,7 +23,7 @@ export class DivNode extends BaseNode {
     }
     set pos(pos) {
         this.position = pos;
-        this.updateElement;
+        this.updateElement();
     }
     get pos() {
         return this.position;

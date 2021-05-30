@@ -38,6 +38,14 @@ export class Vector {
         return new Vector(this.x ** n, this.y ** n);
     }
 
+    // linear interpolation between 2 vectors
+    lerp(v: Vector, percentage: number) {
+        return new Vector(
+            this.x + (percentage * (v.x - this.x)),
+            this.y + (percentage * (v.y - this.y))
+        );
+    }
+
     get length(): number {
         return Math.sqrt(this.x * this.x + this.y * this.y);
     }

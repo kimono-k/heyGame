@@ -1,8 +1,10 @@
 import { Vector } from "./includes/vector.js";
 import { InputManager } from "./includes/global/inputManager.js";
 import { TouchManager } from "./includes/global/touchManager.js";
-export class Game {
+import { NodeEventGenerator } from "./includes/global/nodeEventGenerator.js";
+export class Game extends NodeEventGenerator {
     constructor(gameDiv) {
+        super();
         this.collisionNodes = {};
         this.pxMult = new Vector(1, 1);
         this.delta = 0;
@@ -50,7 +52,9 @@ export class Game {
             this.frameRate = this.frameCounter;
             this.frameCounter = 0;
         }
+        this.trigger('update');
         this.root.loop(this.delta);
+        this.trigger('late_update');
         this.physicsUpdate();
         this.render();
         this.input.update();
