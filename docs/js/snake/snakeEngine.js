@@ -64,7 +64,7 @@ export class SnakeEngine extends Game {
         this.rootNode.addChild(letter);
         letter.game = this;
         letter.div.style.fontSize = `${this.segmentSize.x * 0.66}px`;
-        letter.pos = randomPos.multiply(this.segmentSize);
+        letter.pos = randomPos.add(new Vector(0.25, -0.5)).multiply(this.segmentSize);
         this.letters.push(letter);
     }
     createSnakeSegment(pos) {
@@ -111,7 +111,7 @@ export class SnakeEngine extends Game {
     snakeUpdate(self) {
         self.moveTimer += self.delta * 20 / 1000 * Math.pow(self.moveTime, -1);
         if (self.moveTimer >= 1) {
-            let snakeHead = self.snakePos[self.snakePos.length - 1];
+            let snakeHead = self.snakeTarget[self.snakeTarget.length - 1];
             for (let i = 0; i < self.letterPos.length; i++) {
                 let l = self.letterPos[i];
                 if (l.x === snakeHead.x && l.y === snakeHead.y) {
