@@ -17,11 +17,8 @@ v0
 
 v0.1
 
-snake moves
-
-V0.2
-
-snake's direction can be changed by swiping
+- snake's direction can be changed by swiping
+- snake moves
 
 v0 
 
