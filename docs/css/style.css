@@ -61,6 +61,14 @@
     
 }   
 
+@font-face {
+    font-family: lettersForLearners;
+    src: url(../assets/fonts/letters_for_learners.ttf);
+
+    font-family: setFireToTheRain;
+    src: url(../assets/fonts/set_fire_to_the_rain.ttf);
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -71,7 +79,7 @@ body {
 
     color: var(--onsurface-color);
     background-color: var(--bg-color);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: setFireToTheRain;
 }
 
 background, player, ui {
