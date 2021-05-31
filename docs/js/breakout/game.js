@@ -17,6 +17,7 @@ class Game {
     checkCollision(a, b) {
     }
     changeglobalScore(amount) {
+
     }
 }
 window.addEventListener("load", () => new Game());

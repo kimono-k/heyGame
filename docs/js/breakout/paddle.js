@@ -5,6 +5,8 @@ export class Paddle {
         this.inputLeft = 65;
         this.inputRight = 68;
         this.spawn();
+        window.addEventListener("keyup", (e) => this.onKeyUp(e));
+        window.addEventListener("keydown", (e) => this.onKeyDown(e));
     }
     update() {
     }
@@ -13,6 +15,8 @@ export class Paddle {
         let background = document.querySelector("background");
         background.appendChild(this.element);
         console.log("Paddle was created");
+        this.posX = 500;
+        this.posY = 600;
     }
     reset() {
     }
@@ -23,6 +27,7 @@ export class Paddle {
     checkBorderCollision() {
     }
     getRectancle() {
+        return this.element.getBoundingClientRect();
     }
     getFutureRectangle() {
     }
