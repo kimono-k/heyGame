@@ -1,19 +1,18 @@
 @import "style.css";
 
+body {
+    background-color: lavender;
+}
 background {
     z-index: -1;
     background-image: url('../assets/img/breakout/border.png');
-    background-color: lavender;
-    background-size: cover;
-    background-position: center;
-    width: 990px;
-    height: 532px;
-}
-
-paddle, ball {
-    position: absolute;
+    width: 1280px;
+    height: 720px;
     display: block;
-    box-sizing: border-box;
+    background-position: center;
+    background-size: cover;
+    margin: auto;
+    padding: 30px 30px;
 }
 
 paddle, ball {
