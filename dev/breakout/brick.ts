@@ -16,7 +16,7 @@ export class Brick {
     // Properties
 
     // Constructor
-    constructor(row : number, column : number, breakstatus : number = 2, color : string = blue, itemtype : default, item : string, hidden : boolean = false) {
+    constructor(row : number, column : number, breakstatus : number = 2, color : string = blue, itemtype : string = default, item : string, hidden : boolean = false) {
         this.spawn()
     }
     
