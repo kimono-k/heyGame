@@ -27,7 +27,6 @@ export class Level {
         console.log("Level was created!");
 
         this.init(level)
-        this.paddle = new Paddle
     }
 
     // Functions

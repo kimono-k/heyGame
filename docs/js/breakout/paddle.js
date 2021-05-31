@@ -1,7 +1,5 @@
 export class Paddle {
     constructor() {
-        this.posX = clientWidth / 2;
-        this.posY = clientHeight - 10;
         this.speedX = 0;
         this.inputLeft = 65;
         this.inputRight = 68;

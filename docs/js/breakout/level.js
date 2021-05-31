@@ -7,7 +7,6 @@ export class Level {
         this.level = 1;
         console.log("Level was created!");
         this.init(level);
-        this.paddle = new Paddle;
     }
     update() {
         this.paddle.update();
