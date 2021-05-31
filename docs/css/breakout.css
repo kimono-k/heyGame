@@ -16,6 +16,12 @@ paddle, ball {
     box-sizing: border-box;
 }
 
+paddle, ball {
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+}
+
 paddle {
     background-image: url('../assets/img/breakout/paddle.png');
     width: 173px;

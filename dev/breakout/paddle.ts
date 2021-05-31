@@ -1,11 +1,16 @@
 export class Paddle {
-    private element: HTMLElement
-    private posX: number
-    private posY: number
-    private speedX: number = 0
-    private inputLeft: number
-    private inputRight: number
+    // Parameters
+    // Fields    
+    private element : HTMLElement
+    private posX : number = clientWidth / 2
+    private posY : number = clientHeight - 10
+    private speedX : number = 0
+    private inputLeft : number = 65
+    private inputRight : number = 68
 
+    // Properties
+
+    // Constructor
     constructor(){
         this.spawn();
 
@@ -13,7 +18,19 @@ export class Paddle {
         window.addEventListener("keydown", (e:KeyboardEvent) => this.onKeyDown(e))
     }
 
-    public spawn(){
+    // Functions
+
+    // gameloop
+    public update() : void {
+        //TODO update the paddle so it can move
+        this.posX += this.speedX;
+
+        //TODO draw the sprite on the right pace
+        this.element.style.transform = `translate(${this.posX}px, ${this.posY}px)`
+    }
+
+    // general functions 
+    public spawn() : void {
         this.element = document.createElement("paddle");
         let background = document.querySelector("background");
         background.appendChild(this.element);
@@ -24,19 +41,12 @@ export class Paddle {
         this.posY = 600;
     }
 
-    public update(){
-        //TODO update the paddle so it can move
-        this.posX += this.speedX;
-
-        //TODO draw the sprite on the right pace
-        this.element.style.transform = `translate(${this.posX}px, ${this.posY}px)`
-    }
-
-    public reset(){
+    public reset() : void {
         //TODO reset the whole class
     }
 
-    private onKeyDown(e: KeyboardEvent): void {
+    // keybinds
+    private onKeyDown(e: KeyboardEvent) : void {
         switch (e.key) {
             case "a":
             case "ArrowLeft" :
@@ -49,7 +59,7 @@ export class Paddle {
         }
     }
 
-    private onKeyUp(e: KeyboardEvent): void {
+    private onKeyUp(e: KeyboardEvent) : void {
         switch (e.key) {
             case "a":
             case "d":
@@ -60,19 +70,19 @@ export class Paddle {
         }
     }
 
+    // collision
     public checkBorderCollision(a: ClientRect, b: ClientRect) {
-        return (a.left <= b.right &&
-            b.left <= a.right &&
-            a.top <= b.bottom &&
-            b.top <= a.bottom)
+      game.checkCollision(a, b)
     }
 
-    public getRectancle(){
+    // global functions
+    public getRectancle() : ClientRect {
         //TODO get the rectangle for the collision
         return this.element.getBoundingClientRect()
+      
     }
 
-    public getFutureRectangle(){
+    public getFutureRectangle() : ClientRect {
 
     }
 
