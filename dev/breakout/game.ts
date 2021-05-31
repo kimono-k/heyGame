@@ -14,7 +14,7 @@ class Game {
     constructor(){
         console.log("Game was created!");
 
-        this.startLevel(level)
+        this.startLevel(1)
 
         this.gameLoop()
     }
@@ -30,7 +30,7 @@ class Game {
 
     // general functions 
     private startLevel(level : number) : void { 
-        this.level = new Level()
+        this.level = new Level(1)
     }
 
     // global functions

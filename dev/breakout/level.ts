@@ -23,11 +23,10 @@ export class Level {
     // Properties
 
     // Constructor
-    constructor(){
+    constructor(level : number){
         console.log("Level was created!");
 
         this.init(level)
-        this.paddle = new Paddle
     }
 
     // Functions
@@ -39,10 +38,12 @@ export class Level {
         // ball.update()
         // grid.update()
         // array Brick123.update()
+        this.paddle.update();
     }
 
     // general functions 
     private init(level : number) { 
+        this.paddle = new Paddle;
         // todo: switchcase levelinit 1 2 3 
     }
 

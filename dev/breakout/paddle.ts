@@ -2,8 +2,10 @@ export class Paddle {
     // Parameters
     // Fields    
     private element : HTMLElement
-    private posX : number = clientWidth / 2
-    private posY : number = clientHeight - 10
+    private posX : number
+    private posY : number
+    // private posX : number = window.innerWidth / 2
+    // private posY : number = window.innerHeight - 10
     private speedX : number = 0
     private inputLeft : number = 65
     private inputRight : number = 68
@@ -23,7 +25,7 @@ export class Paddle {
     // gameloop
     public update() : void {
         //TODO update the paddle so it can move
-        this.posX += this.speedX;
+        this.posX += this.speedX
 
         //TODO draw the sprite on the right pace
         this.element.style.transform = `translate(${this.posX}px, ${this.posY}px)`
