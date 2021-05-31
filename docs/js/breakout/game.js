@@ -15,9 +15,12 @@ class Game {
         this.level = new Level(1);
     }
     checkCollision(a, b) {
+        return (a.left <= b.right &&
+            b.left <= a.right &&
+            a.top <= b.bottom &&
+            b.top <= a.bottom);
     }
     changeglobalScore(amount) {
-
     }
 }
 window.addEventListener("load", () => new Game());
