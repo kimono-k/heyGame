@@ -4,7 +4,7 @@ class Game {
         this.levelType = 1;
         this.levelNumber = 1;
         console.log("Game was created!");
-        this.startLevel(level);
+        this.startLevel(1);
         this.gameLoop();
     }
     gameLoop() {
@@ -12,7 +12,7 @@ class Game {
         requestAnimationFrame(() => this.gameLoop());
     }
     startLevel(level) {
-        this.level = new Level();
+        this.level = new Level(1);
     }
     checkCollision(a, b) {
     }

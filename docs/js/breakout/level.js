@@ -1,6 +1,6 @@
 import { Paddle } from "./paddle.js";
 export class Level {
-    constructor() {
+    constructor(level) {
         this.lives = 3;
         this.isGameOver = false;
         this.levelType = 1;
@@ -10,8 +10,10 @@ export class Level {
         this.paddle = new Paddle;
     }
     update() {
+        this.paddle.update();
     }
     init(level) {
+        this.paddle = new Paddle;
     }
     reset() {
     }
