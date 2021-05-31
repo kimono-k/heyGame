@@ -10,6 +10,12 @@ background {
     height: 100%;
 }
 
+paddle, ball {
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+}
+
 paddle {
     background-image: url('../assets/img/breakout/paddle.png');
     width: 963px;
