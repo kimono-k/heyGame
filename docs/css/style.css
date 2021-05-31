@@ -73,19 +73,9 @@ body {
     margin: 0;
     padding: 0;
 
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-
     color: var(--onsurface-color);
     background-color: var(--bg-color);
     font-family: setFireToTheRain;
-}
-
-background, player, ui {
-    position: absolute;
-    display: block;
-    box-sizing: border-box;
 }
 
 
