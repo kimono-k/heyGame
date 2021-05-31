@@ -5,15 +5,21 @@ background {
     background-image: url('../assets/img/breakout/border.png');
     background-color: lavender;
     background-size: cover;
-    background-position: bottom center;
-    width: 100%;
-    height: 100%;
+    background-position: center;
+    width: 990px;
+    height: 532px;
+}
+
+paddle, ball {
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
 }
 
 paddle {
     background-image: url('../assets/img/breakout/paddle.png');
-    width: 963px;
-    height: 128px;
+    width: 173px;
+    height: 31px;
     cursor: pointer;
 }
 

@@ -7,7 +7,14 @@ class Game {
     constructor(){
         console.log("Game was created!");
         this.paddle = new Paddle;
+        this.gameLoop();
     
+    }
+
+    private gameLoop() {
+        this.paddle.update();
+
+        requestAnimationFrame(() => this.gameLoop()) 
     }
 }
 
