@@ -1,14 +1,48 @@
-import { Paddle } from "./paddle.js";
+import { Level } from "./level.js";
 
 class Game {
-    
-    paddle: Paddle;
+    // Parameters
+    // Fields    
+    private globalScore : number
+    private levelType : number = 1
+    private levelNumber : number = 1
+    private level : Level
 
+    // Properties
+
+    // Constructor
     constructor(){
         console.log("Game was created!");
-        this.paddle = new Paddle;
-    
+
+        this.startLevel(level)
+
+        this.gameLoop()
     }
+
+    // Functions
+
+    // gameLoop
+    private gameLoop() {
+        this.level.update()
+
+        requestAnimationFrame(() => this.gameLoop()) 
+    }
+
+    // general functions 
+    private startLevel(level : number) : void { 
+        this.level = new Level()
+    }
+
+    // global functions
+    public checkCollision(a : ClientRect, b : ClientRect) : boolean {
+
+    }
+
+    public changeglobalScore(amount : number) : void {
+
+    }
+
+
 }
 
-new Game();
+window.addEventListener("load", () => new Game())

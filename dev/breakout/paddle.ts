@@ -1,15 +1,28 @@
 export class Paddle {
-    private element: HTMLElement
-    private posX: number
-    private posY: number
-    private speedX: number
-    private inputLeft: number
-    private inputRight: number
+    // Parameters
+    // Fields    
+    private element : HTMLElement
+    private posX : number = clientWidth / 2
+    private posY : number = clientHeight - 10
+    private speedX : number
+    private inputLeft : number = 65
+    private inputRight : number = 68
 
+    // Properties
+
+    // Constructor
     constructor(){
         this.spawn();
     }
 
+    // Functions
+
+    // gameloop
+    public update() : void {
+
+    }
+
+    // general functions 
     public spawn(){
         this.element = document.createElement("paddle");
         let background = document.querySelector("background");
@@ -21,31 +34,30 @@ export class Paddle {
         // this.posY = 100;
     }
 
-    public update(){
+    public reset() : void {
 
     }
 
-    public reset(){
+    // keybinds
+    private onKeyUp(){
 
     }
 
-    private onKeyLeft(){
+    private onKeyDown(){
 
     }
 
-    private onKeyRight(){
-
-    }
-
+    // collision
     public checkBorderCollision(){
 
     }
 
-    public getRectancle(){
+    // glabal funtions
+    public getRectancle() : ClientRect {
 
     }
 
-    public getFutureRectangle(){
+    public getFutureRectangle() : ClientRect {
 
     }
 

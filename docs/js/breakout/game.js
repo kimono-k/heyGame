@@ -1,9 +1,23 @@
-import { Paddle } from "./paddle.js";
+import { Level } from "./level.js";
 class Game {
     constructor() {
+        this.levelType = 1;
+        this.levelNumber = 1;
         console.log("Game was created!");
-        this.paddle = new Paddle;
+        this.startLevel(level);
+        this.gameLoop();
+    }
+    gameLoop() {
+        this.level.update();
+        requestAnimationFrame(() => this.gameLoop());
+    }
+    startLevel(level) {
+        this.level = new Level();
+    }
+    checkCollision(a, b) {
+    }
+    changeglobalScore(amount) {
     }
 }
-new Game();
+window.addEventListener("load", () => new Game());
 //# sourceMappingURL=game.js.map
