@@ -5,30 +5,6 @@ import { DragNode } from "./includes/physics/dragNode.js";
 import { Vector } from "./includes/vector.js";
 import { SnakeEngine } from "./snakeEngine.js";
 
-// let main = new Game(document.querySelector('game'));
-
-// let vertical = new DragNode(new Vector(100, 0), new Vector(50, 50), 'snakeSegment');
-// vertical.customUpdate = function(self: DragNode) {
-//     self.pos = new Vector(0, self.dragPos.y);
-// }
-// let horizontal = new DragNode(new Vector(0, 100), new Vector(50, 50), 'snakeSegment');
-// horizontal.customUpdate = function(self: DragNode) {
-//     self.pos = new Vector(self.dragPos.x, 0);
-// }
-// let full = new DragNode(new Vector(100, 100), new Vector(50, 50), 'snakeSegment');
-// full.customUpdate = function(self: DragNode) {
-//     self.pos = self.dragPos;
-// }
-
-// let basicRoot = new BaseNode();
-// basicRoot.addChild(vertical);
-// basicRoot.addChild(horizontal);
-// basicRoot.addChild(full);
-
-// main.rootNode = basicRoot;
-
-// main.start();
-
 let main = new SnakeEngine(document.querySelector('game'));
 
 

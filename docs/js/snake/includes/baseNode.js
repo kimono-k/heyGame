@@ -6,7 +6,6 @@ export class BaseNode extends NodeEventGenerator {
         this.children = [];
         this.customUpdate = () => { };
         this.customReady = () => { };
-        this.data = {};
         this.delta = 0;
         this.div = document.createElement(tag);
         for (let c of classes)
@@ -17,6 +16,10 @@ export class BaseNode extends NodeEventGenerator {
         child.parent = this;
         this.children.push(child);
         this.refreshChildren();
+    }
+    disconnect() {
+        this.parent.children.splice(this.parent.children.indexOf(this), 1);
+        this.parent = undefined;
     }
     start() {
         this.div = this.engine.updateEl(new Vector(0, 0), new Vector(0, 0), this.div);

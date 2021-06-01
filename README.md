@@ -18,7 +18,17 @@ v0
 v0.1
 
 - snake's direction can be changed by swiping
-- snake moves
++ snake moves
+
+V0.2
+
+- snake is able to eat apples/letters
+- snake can grow
+
+V0.3
+
+- letters disappear after being eaten
+- new letters get generated after one is eaten
 
 v0 
 
