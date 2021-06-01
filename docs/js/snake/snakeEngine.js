@@ -15,8 +15,8 @@ export class SnakeEngine extends Game {
         this.snakePos = [];
         this.snakeTarget = [];
         this.snakeDivs = [];
-        this.toMove = false;
-        this.moveTime = 0.7;
+        this.toEat = false;
+        this.moveTime = 0.3;
         this.moveTimer = 0;
         this.map = new Array(this.h).fill(new Array(this.w).fill('0'));
         let root = new BaseNode();
@@ -67,10 +67,16 @@ export class SnakeEngine extends Game {
         letter.pos = randomPos.add(new Vector(0.25, -0.5)).multiply(this.segmentSize);
         this.letters.push(letter);
     }
-    createSnakeSegment(pos) {
+    createSnakeSegment(pos, unshift = false) {
         let snake = new DivNode(pos.multiply(this.segmentSize), this.segmentSize, 'snakeSegment');
-        this.snakeDivs.push(snake);
-        this.snakePos.push(pos);
+        if (unshift) {
+            this.snakeDivs.unshift(snake);
+            this.snakePos.unshift(pos);
+        }
+        else {
+            this.snakeDivs.push(snake);
+            this.snakePos.push(pos);
+        }
         return snake;
     }
     updateSnakePos(self, offset = 0) {
@@ -89,23 +95,28 @@ export class SnakeEngine extends Game {
     }
     calcTarget(self) {
         let targetPos = self.copyPos(self);
-        if (this.toMove) {
-            this.toMove = false;
-            let segment = this.createSnakeSegment(new Vector(0, 0));
-            this.root.addChild(segment);
-            segment.game = this;
-        }
-        else
-            targetPos.splice(0, 1);
+        targetPos.splice(0, 1);
         let lastSegment = targetPos[targetPos.length - 1];
         targetPos.push(lastSegment.add(self.snakeDir));
         self.snakeTarget = targetPos;
     }
     moveSnake() {
         this.snakePos = this.snakeTarget;
+        if (this.toEat) {
+            let segment = this.createSnakeSegment(this.snakePos[0], true);
+            this.rootNode.addChild(segment);
+            segment.game = this;
+            this.toEat = false;
+        }
         this.calcTarget(this);
     }
     eatLetter(i) {
+        let letter = this.letters[i];
+        console.log(letter);
+        letter.div.remove();
+        this.letterPos.splice(i, 1);
+        this.letters.splice(i, 1);
+        letter.disconnect();
         console.log(i);
     }
     snakeUpdate(self) {
@@ -115,8 +126,9 @@ export class SnakeEngine extends Game {
             for (let i = 0; i < self.letterPos.length; i++) {
                 let l = self.letterPos[i];
                 if (l.x === snakeHead.x && l.y === snakeHead.y) {
-                    self.toMove = true;
+                    self.toEat = true;
                     self.eatLetter(i);
+                    self.generateLetter();
                 }
             }
             self.moveSnake();
