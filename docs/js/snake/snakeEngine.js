@@ -7,7 +7,7 @@ export class SnakeEngine extends Game {
     constructor(gameDiv) {
         super(gameDiv);
         this.size = new Vector(12, 8);
-        this.segmentSize = new Vector(60, 60);
+        this.segmentSize = new Vector(10, 10);
         this.snakeDir = new Vector(1, 0);
         this.map = [];
         this.letters = [];
@@ -16,7 +16,7 @@ export class SnakeEngine extends Game {
         this.snakeTarget = [];
         this.snakeDivs = [];
         this.toEat = false;
-        this.moveTime = 0.3;
+        this.moveTime = 0.4;
         this.moveTimer = 0;
         this.map = new Array(this.h).fill(new Array(this.w).fill('0'));
         let root = new BaseNode();
@@ -25,6 +25,8 @@ export class SnakeEngine extends Game {
         root.addChild(this.createSnakeSegment(new Vector(5, 3)));
         root.addChild(this.createSnakeSegment(new Vector(6, 3)));
         this.rootNode = root;
+        let mult = Math.min(window.innerWidth / 120, window.innerHeight / 80);
+        this.pxMult = new Vector(mult, mult);
         this.generateLetter('d');
         this.touch.connect('swiped', this, this.swipeHandler);
         this.connect('update', this, this.snakeUpdate);
@@ -63,7 +65,7 @@ export class SnakeEngine extends Game {
         let letter = new Letter(text);
         this.rootNode.addChild(letter);
         letter.game = this;
-        letter.div.style.fontSize = `${this.segmentSize.x * 0.66}px`;
+        letter.div.style.fontSize = `${this.segmentSize.x * this.pxMult.x * 0.66}px`;
         letter.pos = randomPos.add(new Vector(0.25, -0.5)).multiply(this.segmentSize);
         this.letters.push(letter);
     }
@@ -137,10 +139,10 @@ export class SnakeEngine extends Game {
         }
         self.updateSnakePos(self, self.moveTimer);
     }
-    get h() {
+    get w() {
         return this.size.x;
     }
-    get w() {
+    get h() {
         return this.size.y;
     }
 }
