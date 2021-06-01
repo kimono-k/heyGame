@@ -163,8 +163,6 @@ https://github.com/LuukFTF/knowledgebase/blob/master/articles/development/git.md
             + bounceX() : void
             + bounceY() : void
             + toggleStick() : void
-            - onKeyUp()
-            - onKeyDown()
             + getRectangle() : ClientRect
             + getFutureRectangle() : ClientRect
         }
