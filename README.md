@@ -30,6 +30,10 @@ V0.3
 - letters disappear after being eaten
 - new letters get generated after one is eaten
 
+V0.4
+
+- dynamically sized game based on resolution
+
 v0 
 
 ### Breakout
