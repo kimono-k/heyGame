@@ -71,7 +71,8 @@ export class SnakeEngine extends Game {
     }
 
     generateLetter(text = 'a') {
-        let genPos = () => {return new Vector(Math.floor(Math.random() * this.w),
+        let genPos = () => {return new Vector(
+            Math.floor(Math.random() * this.w),
             Math.floor(Math.random() * this.h))};
         let randomPos = genPos();
         while (this.isOccupied(randomPos)) {

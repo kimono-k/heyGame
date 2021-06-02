@@ -4,9 +4,9 @@ export class BaseNode extends NodeEventGenerator {
     constructor(tag = 'div', classes = []) {
         super();
         this.children = [];
+        this.delta = 0;
         this.customUpdate = () => { };
         this.customReady = () => { };
-        this.delta = 0;
         this.div = document.createElement(tag);
         for (let c of classes)
             this.div.classList.add(c);

@@ -34,7 +34,22 @@ V0.4
 
 - dynamically sized game based on resolution
 
-v0 
+V0.5
+
+- made the classes more strict (explicit public/private/protected)
+- the game does not work anymore
+
+## to do
+
+- functionaliteit om te sterven
+- snake dood wanneer tegen de rand
+- snake dood wanneer tegen snake
+- woord onderin scherm laten verschijnen
+- letters van woord tegelijk genereren
+- nieuw woord wanneer woord is gepakt
+- cool effect ofzo wanneer woord is gepakt
+- sprites
+- geanimeerde sprites
 
 ### Breakout
 

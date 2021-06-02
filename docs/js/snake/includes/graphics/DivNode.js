@@ -1,7 +1,7 @@
 import { BaseNode } from "../baseNode.js";
 import { Vector } from "../vector.js";
 export class DivNode extends BaseNode {
-    constructor(pos, area = new Vector(50, 50), tag = 'div', classes = ['gameComp']) {
+    constructor(pos, area = new Vector(50, 50), tag = 'div', classes = []) {
         super(tag, classes);
         this.position = pos;
         this.area = area;
@@ -34,13 +34,6 @@ export class DivNode extends BaseNode {
     }
     get size() {
         return this.area;
-    }
-}
-class ImgNode extends DivNode {
-    constructor(pos, area = new Vector(50, 50), src = '', classes = ['gameComp']) {
-        super(pos, area, 'img', classes);
-        this.src = `assets/${src}`;
-        this.div.setAttribute('src', src);
     }
 }
 //# sourceMappingURL=DivNode.js.map
