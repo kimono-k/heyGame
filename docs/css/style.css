@@ -70,7 +70,7 @@
 }
 
 body {
-    margin: 0;
+    margin: auto;
     padding: 0;
 
     color: var(--onsurface-color);
@@ -78,6 +78,38 @@ body {
     font-family: setFireToTheRain;
 }
 
+header, footer {
+    background-color: var(--primary-color);
+    height: 80px;
+}
+
+.fox {
+    background-image: url(../assets/img/general/foxIdle1.png);
+    background-repeat: no-repeat;
+    width: 56px;
+    height: 69px;
+    margin: 40px;
+    padding: 20px;
+    cursor: pointer;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 1px;
+    
+}
+
+.buttons {
+    border:hsl(198, 100%, 65%) solid 10px;
+    height: 77vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 
 /* Button */
@@ -88,15 +120,14 @@ input[type="submit"] {
     background: var(--primary-color);
     color: var(--onprimary-color);
 
-    display: inline-block;
-    
+    margin: 10px;
     padding: 10px 30px;
     border: none;
     border-radius: 5px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 
     text-decoration: none;
-    font-size: 1em;
+    font-size: 2em;
 
     cursor: pointer;
 }
@@ -104,7 +135,6 @@ input[type="submit"] {
 .btn:hover, 
 .btn:active {
     background: var(--primary-color-light);
-
     box-shadow: 0 3px 13px rgba(0, 0, 0, 0.2);
 }
 
@@ -116,7 +146,6 @@ input[type="submit"] {
 .btn.secondary:hover, 
 .btn.secondary:active {
     background: var(--secondary-color-light);
-
     box-shadow: 0 3px 13px rgba(0, 0, 0, 0.2);
 }
 
@@ -128,6 +157,6 @@ input[type="submit"] {
 .btn.tertiary:hover, 
 .btn.tertiary:active {
     background: var(--tertiary-color-light);
-
+    margin: auto;
     box-shadow: 0 3px 13px rgba(0, 0, 0, 0.2);
 }
