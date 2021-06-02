@@ -4,19 +4,19 @@ import { NodeEventGenerator } from "./global/nodeEventGenerator.js";
 import { TouchManager } from "./global/touchManager.js";
 import { Vector } from "./vector.js";
 
-export class BaseNode extends NodeEventGenerator{
+export class BaseNode extends NodeEventGenerator {
     public engine: Game;
     public input: InputManager;
     public touch: TouchManager;
     public parent: BaseNode;
     public children: BaseNode[] = [];
 
-    protected customUpdate: (self: BaseNode, delta: number) => void = () => { };
-    protected customReady: (self: BaseNode) => void = () => { };
-
     public div: HTMLElement;
 
     public delta = 0;
+
+    protected customUpdate: (self: BaseNode, delta: number) => void = () => { };
+    protected customReady: (self: BaseNode) => void = () => { };
 
     constructor(tag = 'div', classes: string[] = []) {
         super();
