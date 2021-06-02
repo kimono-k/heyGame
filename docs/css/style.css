@@ -80,7 +80,7 @@ body {
 
 header, footer {
     background-color: var(--primary-color);
-    height: 80px;
+    height: 10vh;
 }
 
 .fox {
@@ -121,11 +121,14 @@ input[type="submit"] {
     color: var(--onprimary-color);
 
     margin: 10px;
-    padding: 10px 30px;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    width: 20vw;
+    height: 5vh;
 
+    text-align: center;
     text-decoration: none;
     font-size: 2em;
 
