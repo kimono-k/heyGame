@@ -6,7 +6,6 @@ export class Game extends NodeEventGenerator {
     constructor(gameDiv) {
         super();
         this.collisionNodes = {};
-        this.baseResolution = new Vector(480, 270);
         this.pxMult = new Vector(1, 1);
         this.delta = 0;
         this.deltaTimestamp = 0;
@@ -53,8 +52,11 @@ export class Game extends NodeEventGenerator {
             this.frameRate = this.frameCounter;
             this.frameCounter = 0;
         }
+        this.trigger('update');
         this.root.loop(this.delta);
+        this.trigger('late_update');
         this.physicsUpdate();
+        this.render();
         this.input.update();
         this.touch.update();
         window.requestAnimationFrame((ms) => this.update(ms));
@@ -91,8 +93,6 @@ export class Game extends NodeEventGenerator {
     }
     start() {
         this.root.start();
-        let mult = Math.min(window.innerWidth / this.baseResolution.x, window.innerHeight / this.baseResolution.y);
-        this.pxMult = new Vector(mult, mult);
         this.render();
         window.requestAnimationFrame((ms) => this.update(ms));
     }
