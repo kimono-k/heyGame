@@ -15,7 +15,6 @@ export class Game extends NodeEventGenerator {
 
     public gameDiv: HTMLElement;
 
-    public baseResolution = new Vector(480, 270);
     public pxMult = new Vector(1, 1);
 
     public delta = 0;
@@ -78,8 +77,11 @@ export class Game extends NodeEventGenerator {
             // this.frameElement.innerText = this.frameRate;
         }
 
+        this.trigger('update');
         this.root.loop(this.delta);
+        this.trigger('late_update');
         this.physicsUpdate();
+        this.render();
         this.input.update();
         this.touch.update();
 
@@ -123,9 +125,6 @@ export class Game extends NodeEventGenerator {
 
     public start() {
         this.root.start();
-        let mult = Math.min(window.innerWidth / this.baseResolution.x,
-            window.innerHeight / this.baseResolution.y);
-        this.pxMult = new Vector(mult, mult);
         this.render();
         window.requestAnimationFrame((ms) => this.update(ms));
     }
