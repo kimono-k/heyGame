@@ -8,6 +8,7 @@ export class BrickGrid {
     reset() {
     }
     getRectangle() {
+        return this.element.getBoundingClientRect();
     }
 }
 //# sourceMappingURL=brickgrid.js.map

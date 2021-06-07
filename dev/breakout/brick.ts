@@ -1,4 +1,4 @@
-import { Brick } from "./fallingitem.js";
+import { FallingItem } from "./fallingitem.js";
 
 export class Brick {
     // Parameters
@@ -16,7 +16,7 @@ export class Brick {
     // Properties
 
     // Constructor
-    constructor(row : number, column : number, breakstatus : number = 2, color : string = blue, itemtype : string = default, item : string, hidden : boolean = false) {
+    constructor(row : number, column : number, breakstatus : number = 2, color : string = "blue", itemtype : string = "default", item : string, hidden : boolean = false) {
         this.spawn()
     }
     
@@ -51,6 +51,6 @@ export class Brick {
     }
 
     public getRectangle() : ClientRect {
-
+        return this.element.getBoundingClientRect()
     }
 }

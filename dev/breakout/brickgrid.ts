@@ -36,6 +36,6 @@ export class BrickGrid {
 
     // glabal funtions
     public getRectangle() : ClientRect {
-
+        return this.element.getBoundingClientRect()
     }
 }

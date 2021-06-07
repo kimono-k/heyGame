@@ -1,5 +1,5 @@
 export class Brick {
-    constructor(row, column, breakstatus = 2, color = blue, itemtype = , , item, hidden = false) {
+    constructor(row, column, breakstatus = 2, color = "blue", itemtype = "default", item, hidden = false) {
         this.spawn();
     }
     update() {
@@ -15,6 +15,7 @@ export class Brick {
     checkItem() {
     }
     getRectangle() {
+        return this.element.getBoundingClientRect();
     }
 }
 //# sourceMappingURL=brick.js.map

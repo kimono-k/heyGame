@@ -3,9 +3,12 @@ import { Paddle } from "./paddle.js";
 import { Ball } from "./ball.js";
 import { BrickGrid } from "./brickgrid.js";
 
+import { Game } from "./game.js"
+
 export class Level {
     // Parameters
     // Fields    
+    private gameInstance : Game
     private score : number
     private promptText : string
     private nextPromptText : string
@@ -20,10 +23,12 @@ export class Level {
     private ball : Ball
     private brickGrid : BrickGrid
 
+
     // Properties
 
     // Constructor
-    constructor(level : number){
+    constructor(level : number, gameInstance : Game){
+        this.gameInstance = gameInstance
         console.log("Level was created!");
 
         this.init(level)
@@ -35,7 +40,7 @@ export class Level {
     public update() : void {
         // todo: updates classes linken
         // paddle.update()
-        // ball.update()
+        this.ball.update()
         // grid.update()
         // array Brick123.update()
         this.paddle.update();
@@ -44,6 +49,7 @@ export class Level {
     // general functions 
     private init(level : number) { 
         this.paddle = new Paddle;
+        this.ball = new Ball(this.gameInstance);
         // todo: switchcase levelinit 1 2 3 
     }
 

@@ -6,6 +6,8 @@ edit to update pages
 ### General (v0.1)
 
 v0.1
+- updated color pallete
+- added grid styling
 - added button styling
 - updated readme
 - added changelog
