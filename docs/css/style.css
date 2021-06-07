@@ -112,9 +112,9 @@ h1 {
     font-size: 2em;
 }
 
-.buttons {
-    border-left:#2ce8f5 solid 200px;
-    border-right: #2ce8f5 solid 200px;
+.border {
+    border-left:#2ce8f5 solid 15vw;
+    border-right: #2ce8f5 solid 15vw;
     height: 80vh;
     display: flex;
     align-items: center;
@@ -131,12 +131,11 @@ input[type="submit"] {
     color: var(--onprimary-color);
 
     margin: 15px;
-    padding: 10px 10px;
+    padding: 5px 5px;
     border: none;
     border-radius: 5px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
     width: 15vw;
-    height: 5vh;
 
     text-align: center;
     text-decoration: none;
