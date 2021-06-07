@@ -33,7 +33,7 @@ v0
 ## General
 
 ### Links
-https://luukftf.github.io/heyGame/
+https://heygamers.github.io/heyGame/
 
 ### Technical Structure
 
@@ -211,7 +211,7 @@ https://github.com/LuukFTF/knowledgebase/blob/master/articles/development/git.md
                     + getRectangle() : ClientRect
                     + getFutureRectangle() : ClientRect
                 }
-            }
+            }s
         }
     }
 }

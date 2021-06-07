@@ -79,7 +79,7 @@ body {
 
     color: var(--onsurface-color);
     background-color: var(--bg-color);
-    font-family: setFireToTheRain;
+    font-family: setFireToTheRain, Comic Sans MS, Arial, Helvetica, sans-serif;
 }
 
 background, player, ui {
