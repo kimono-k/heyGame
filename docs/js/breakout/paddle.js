@@ -16,8 +16,8 @@ export class Paddle {
         let level = document.querySelector("level");
         level.appendChild(this.element);
         console.log("Paddle was created");
-        this.posX = 500;
-        this.posY = 600;
+        this.posX = 300;
+        this.posY = 500;
     }
     reset() {
     }
