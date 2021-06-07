@@ -2,18 +2,10 @@
 
 body {
     background-color: lavender;
+    max-height: 100%;
+    overflow: hidden;
 }
-background {
-    z-index: -1;
-    background-image: url('../assets/img/breakout/border.png');
-    width: 1280px;
-    height: 720px;
-    display: block;
-    background-position: center;
-    background-size: cover;
-    margin: auto;
-    padding: 30px 30px;
-}
+
 
 paddle, ball {
     position: absolute;
