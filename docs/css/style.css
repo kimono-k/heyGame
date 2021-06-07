@@ -169,6 +169,5 @@ input[type="submit"] {
 .btn.tertiary:hover, 
 .btn.tertiary:active {
     background: var(--tertiary-color-light);
-    margin: auto;
     box-shadow: 0 3px 13px rgba(0, 0, 0, 0.2);
 }
