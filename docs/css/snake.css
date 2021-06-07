@@ -33,3 +33,7 @@ body {
 .blue {
     background-color: var(--primary-color) !important;
 }
+
+.gameLetter {
+    z-index: -10;
+}

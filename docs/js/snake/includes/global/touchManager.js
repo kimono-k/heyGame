@@ -25,6 +25,7 @@ export class TouchManager extends NodeEventGenerator {
         }
     }
     onTouchEventUp(e) {
+        e.preventDefault();
         for (let t of e.changedTouches) {
             if (t.identifier === this.trackId) {
                 this.onTouchUp(t);
@@ -54,10 +55,8 @@ export class TouchManager extends NodeEventGenerator {
         }
     }
     onTouchMove(e) {
-        if (this.activeTracking) {
-            this.lastMove = new Vector(e.pageX, e.pageY).multiply(this.engine.pxMult.pow(-1));
-            this.trigger('touchMove', { 'touchEvent': e });
-        }
+        this.lastMove = new Vector(e.pageX, e.pageY).multiply(this.engine.pxMult.pow(-1));
+        this.trigger('touchMove', { 'touchEvent': e });
     }
     update() {
         this.justTapped = false;

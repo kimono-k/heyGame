@@ -1,20 +1,11 @@
 @import "style.css";
 
-background {
-    z-index: -1;
-    background-image: url('../assets/img/breakout/border.png');
+body {
     background-color: lavender;
-    background-size: cover;
-    background-position: center;
-    width: 990px;
-    height: 532px;
+    max-height: 100%;
+    overflow: hidden;
 }
 
-paddle, ball {
-    position: absolute;
-    display: block;
-    box-sizing: border-box;
-}
 
 paddle, ball {
     position: absolute;
