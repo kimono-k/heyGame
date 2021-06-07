@@ -1,7 +1,6 @@
 @import "style.css";
 
 body {
-    background-color: lavender;
     max-height: 100%;
     overflow: hidden;
 }
