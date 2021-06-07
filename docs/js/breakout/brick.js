@@ -1,5 +1,5 @@
 export class Brick {
-    constructor(row, column, breakstatus = 2, color = blue, itemtype, item, hidden = false) {
+    constructor(row, column, breakstatus = 2, color = blue, itemtype = , , item, hidden = false) {
         this.spawn();
     }
     update() {

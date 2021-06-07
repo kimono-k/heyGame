@@ -60,7 +60,7 @@ export class Level {
 
     }
 
-    public finnish() : void {
+    public finish() : void {
 
     }
 

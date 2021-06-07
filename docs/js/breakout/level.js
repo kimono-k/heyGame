@@ -20,7 +20,7 @@ export class Level {
     }
     gameOver() {
     }
-    finnish() {
+    finish() {
     }
     changeLives(amount) {
     }
