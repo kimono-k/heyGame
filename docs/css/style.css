@@ -70,24 +70,56 @@
 }
 
 body {
-    margin: 0;
+    margin: auto;
     padding: 0;
-
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
 
     color: var(--onsurface-color);
     background-color: var(--bg-color);
     font-family: setFireToTheRain;
 }
 
-background, player, ui {
-    position: absolute;
-    display: block;
-    box-sizing: border-box;
+header, footer {
+    background-color: #0099db;
+    height: 10vh;
+    position: relative;
 }
 
+.fox {
+    background-image: url(../assets/img/general/foxIdle1.png);
+    transform : scaleX(-1);
+    background-repeat: no-repeat;
+    width: 56px;
+    height: 69px;
+    margin: 40px;
+    padding: 10px;
+    cursor: pointer;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    height: 100%;
+}
+
+h1 {
+    color: white;
+    font-size: 2em;
+}
+
+.border {
+    border-left:#2ce8f5 solid 15vw;
+    border-right: #2ce8f5 solid 15vw;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 
 /* Button */
@@ -98,15 +130,16 @@ input[type="submit"] {
     background: var(--primary-color);
     color: var(--onprimary-color);
 
-    display: inline-block;
-    
-    padding: 10px 30px;
+    margin: 15px;
+    padding: 5px 5px;
     border: none;
     border-radius: 5px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    width: 15vw;
 
+    text-align: center;
     text-decoration: none;
-    font-size: 1em;
+    font-size: 2em;
 
     cursor: pointer;
 }
@@ -114,7 +147,6 @@ input[type="submit"] {
 .btn:hover, 
 .btn:active {
     background: var(--primary-color-light);
-
     box-shadow: 0 3px 13px rgba(0, 0, 0, 0.2);
 }
 
@@ -126,7 +158,6 @@ input[type="submit"] {
 .btn.secondary:hover, 
 .btn.secondary:active {
     background: var(--secondary-color-light);
-
     box-shadow: 0 3px 13px rgba(0, 0, 0, 0.2);
 }
 
@@ -138,6 +169,5 @@ input[type="submit"] {
 .btn.tertiary:hover, 
 .btn.tertiary:active {
     background: var(--tertiary-color-light);
-
     box-shadow: 0 3px 13px rgba(0, 0, 0, 0.2);
 }

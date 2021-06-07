@@ -24,10 +24,10 @@ export class Paddle {
 
     // gameloop
     public update() : void {
-        //TODO update the paddle so it can move
+        //update the paddle so it can move
         this.posX += this.speedX
 
-        //TODO draw the sprite on the right pace
+        //draw the sprite on the right pace
         this.element.style.transform = `translate(${this.posX}px, ${this.posY}px)`
     }
 

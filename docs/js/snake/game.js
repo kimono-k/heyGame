@@ -93,6 +93,7 @@ export class Game extends NodeEventGenerator {
     }
     start() {
         this.root.start();
+        this.render();
         window.requestAnimationFrame((ms) => this.update(ms));
     }
     addColl(coll) {

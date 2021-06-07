@@ -18,9 +18,38 @@ v0
 v0.1
 
 - snake's direction can be changed by swiping
-- snake moves
++ snake moves
 
-v0 
+V0.2
+
+- snake is able to eat apples/letters
+- snake can grow
+
+V0.3
+
+- letters disappear after being eaten
+- new letters get generated after one is eaten
+
+V0.4
+
+- dynamically sized game based on resolution
+
+V0.5
+
+- made the classes more strict (explicit public/private/protected)
+- the game does not work anymore
+
+## to do
+
+- functionaliteit om te sterven
+- snake dood wanneer tegen de rand
+- snake dood wanneer tegen snake
+- woord onderin scherm laten verschijnen
+- letters van woord tegelijk genereren
+- nieuw woord wanneer woord is gepakt
+- cool effect ofzo wanneer woord is gepakt
+- sprites
+- geanimeerde sprites
 
 ### Breakout
 
