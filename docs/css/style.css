@@ -153,13 +153,22 @@ h2 {
 
 .container {
     display: grid;
-    grid-template-columns: 15vw auto 15vw;
+    grid-template-columns: 15vw 70vw 15vw;
     grid-template-rows: 10vh 80vh 10vh;
     grid-template-areas: 
         "header header header"
         "leftbar main rightbar"
         "footer footer footer";
     z-index: -1;
+}
+
+game, level {
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+
+    width: 70vw;
+    height: 80vh;
 }
 
 

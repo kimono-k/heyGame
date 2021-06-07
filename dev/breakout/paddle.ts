@@ -9,6 +9,7 @@ export class Paddle {
     private speedX : number = 0
     private inputLeft : number = 65
     private inputRight : number = 68
+    
 
     // Properties
 
@@ -34,8 +35,8 @@ export class Paddle {
     // general functions 
     public spawn() : void {
         this.element = document.createElement("paddle");
-        let background = document.querySelector("background");
-        background.appendChild(this.element);
+        let level = document.querySelector("level");
+        level.appendChild(this.element);
         console.log("Paddle was created");
 
         //Create x and y values
@@ -74,7 +75,7 @@ export class Paddle {
 
     // collision
     public checkBorderCollision(a: ClientRect, b: ClientRect) {
-      game.checkCollision(a, b)
+    //   game.checkCollision(a, b)
     }
 
     // global functions
@@ -85,7 +86,8 @@ export class Paddle {
     }
 
     public getFutureRectangle() : ClientRect {
-
+        // TODO: getFutureRectangle
+        return this.element.getBoundingClientRect()
     }
 
 }

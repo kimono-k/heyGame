@@ -1,4 +1,4 @@
-export class FalllingItem {
+export class FallingItem {
     // Parameters
     // Fields  
     private element : HTMLElement
@@ -44,11 +44,12 @@ export class FalllingItem {
 
     // global functions
     public getRectangle() : ClientRect {
-
+        return this.element.getBoundingClientRect()
     }
     
     public getFutureRectangle() : ClientRect {
-
+        // TODO: getFutureRectangle
+        return this.element.getBoundingClientRect()
     }
 
 }

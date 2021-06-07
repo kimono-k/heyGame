@@ -13,8 +13,8 @@ export class Paddle {
     }
     spawn() {
         this.element = document.createElement("paddle");
-        let background = document.querySelector("background");
-        background.appendChild(this.element);
+        let level = document.querySelector("level");
+        level.appendChild(this.element);
         console.log("Paddle was created");
         this.posX = 500;
         this.posY = 600;
@@ -44,12 +44,12 @@ export class Paddle {
         }
     }
     checkBorderCollision(a, b) {
-        game.checkCollision(a, b);
     }
     getRectancle() {
         return this.element.getBoundingClientRect();
     }
     getFutureRectangle() {
+        return this.element.getBoundingClientRect();
     }
 }
 //# sourceMappingURL=paddle.js.map

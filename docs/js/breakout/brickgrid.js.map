@@ -1,1 +1,1 @@
-{"version":3,"file":"brickgrid.js","sourceRoot":"","sources":["../../../dev/breakout/brickgrid.ts"],"names":[],"mappings":"AAEA,MAAM,OAAO,SAAS;IAelB;IAEA,CAAC;IAKM,MAAM;IAEb,CAAC;IAGM,KAAK;IAEZ,CAAC;IACM,KAAK;IAEZ,CAAC;IAGM,YAAY;IAEnB,CAAC;CACJ"}
+{"version":3,"file":"brickgrid.js","sourceRoot":"","sources":["../../../dev/breakout/brickgrid.ts"],"names":[],"mappings":"AAEA,MAAM,OAAO,SAAS;IAelB;IAEA,CAAC;IAKM,MAAM;IAEb,CAAC;IAGM,KAAK;IAEZ,CAAC;IACM,KAAK;IAEZ,CAAC;IAGM,YAAY;QACf,OAAO,IAAI,CAAC,OAAO,CAAC,qBAAqB,EAAE,CAAA;IAC/C,CAAC;CACJ"}

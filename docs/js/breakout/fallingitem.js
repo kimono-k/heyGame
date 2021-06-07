@@ -1,4 +1,4 @@
-export class FalllingItem {
+export class FallingItem {
     constructor() {
     }
     update() {
@@ -12,8 +12,10 @@ export class FalllingItem {
     checkPaddleCollision() {
     }
     getRectangle() {
+        return this.element.getBoundingClientRect();
     }
     getFutureRectangle() {
+        return this.element.getBoundingClientRect();
     }
 }
 //# sourceMappingURL=fallingitem.js.map
