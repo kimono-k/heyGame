@@ -39,8 +39,8 @@ export class Paddle {
         console.log("Paddle was created");
 
         //Create x and y values
-        this.posX = 500;
-        this.posY = 600;
+        this.posX = 300;
+        this.posY = 500;
     }
 
     public reset() : void {
