@@ -39,7 +39,18 @@ V0.4
 V0.5
 
 - made the classes more strict (explicit public/private/protected)
-- the game does not work anymore
+- ~~the game does not work anymore~~
+
+V0.6
+
+- refactored snake
+    - removed NodeEventGenerator
+    - removed node classes
+    - removed InputManager class
+    - removed unnecessary Vector class functions
+    - merged Game class into SnakeEngine class
+    - added GameComponent class
+
 
 ## to do
 
