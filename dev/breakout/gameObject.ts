@@ -4,7 +4,7 @@ b
     protected posX : number
     protected posY : number
     protected speedX : number
-    protected scale : number = 0.3
+    protected scale : number = 1
 
     update(){
         //update the X position so it can move
@@ -19,12 +19,12 @@ b
         level.appendChild(this.element); 
     }
 
-    protected getRectancle() : ClientRect {
+    public getRectancle() : ClientRect {
         //TODO get the rectangle for the collision
         return this.element.getBoundingClientRect()
     }
 
-    protected getFutureRectangle() : ClientRect {
+    public getFutureRectangle() : ClientRect {
         // TODO: getFutureRectangle
         return this.element.getBoundingClientRect()
     }

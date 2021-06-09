@@ -1,5 +1,7 @@
-export class Brick {
+import { GameObject } from "./gameObject.js";
+export class Brick extends GameObject {
     constructor(row, column, breakstatus = 2, color = "blue", itemtype = "default", item, hidden = false) {
+        super();
         this.spawn();
     }
     update() {

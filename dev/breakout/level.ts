@@ -41,6 +41,8 @@ export class Level {
         // grid.update()
         // array Brick123.update()
         this.paddle.update();
+
+        this.checkBallPaddleCollision()
     }
 
     // general functions 
@@ -73,5 +75,13 @@ export class Level {
     }
     public changeScore(amount : number) : void {
 
+    }
+
+    public checkBallPaddleCollision() {
+        let hit = this.gameInstance.checkCollision(this.ball.getRectancle(), this.paddle.getRectancle())
+        
+        if (hit) {
+            this.ball.bounceY()
+        }
     }
 }

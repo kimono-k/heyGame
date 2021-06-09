@@ -1,5 +1,5 @@
 import { Level } from "./level.js";
-class Game {
+export class Game {
     constructor() {
         this.levelType = 1;
         this.levelNumber = 1;

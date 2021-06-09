@@ -21,6 +21,7 @@ export class Ball extends GameObject{
         super.posX = 500
         super.posY = 100
         super.speedX = 1
+        super.scale = 0.3
     }
 
     // Functions
@@ -52,7 +53,8 @@ export class Ball extends GameObject{
 
     }
 
-    public checkPaddleCollision() {
+    public paddleCollisionHandler() {
+        this.bounceY()
         // TODO: paddle collision handler
         // send velocity
         // check if sticky

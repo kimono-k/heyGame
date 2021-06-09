@@ -1,28 +1,20 @@
-export class Ball {
+import { GameObject } from "./gameObject.js";
+export class Ball extends GameObject {
     constructor(gameInstance) {
-        this.posX = 500;
-        this.posY = 100;
-        this.speedX = 1;
+        super();
         this.speedY = -1;
         this.sticky = false;
-        this.scale = 0.3;
         this.gameInstance = gameInstance;
-        this.spawn();
+        super.spawn("ball");
+        super.posX = 500;
+        super.posY = 100;
+        super.speedX = 1;
+        super.scale = 0.3;
     }
     update() {
-        this.posX += this.speedX;
+        super.update();
         this.posY += this.speedY;
-        this.element.style.transform = `matrix(${this.scale}, 0 , 0, ${this.scale}, ${this.posX}, ${this.posY})`;
         this.checkBorderCollision();
-    }
-    spawn() {
-        this.element = document.createElement("ball");
-        let level = document.querySelector("level");
-        level.appendChild(this.element);
-        console.log("spawn ball");
-    }
-    reset() {
-        this.spawn();
     }
     checkBorderCollision() {
         let rightBorder = this.gameInstance.levelWidth - this.element.clientWidth * this.scale * 2.2;
@@ -35,7 +27,8 @@ export class Ball {
             this.bounceX();
         }
     }
-    checkPaddleCollision() {
+    paddleCollisionHandler() {
+        this.bounceY();
     }
     checkBrickCollision() {
     }
@@ -46,12 +39,6 @@ export class Ball {
         this.speedY *= -1;
     }
     toggleStick() {
-    }
-    getRectangle() {
-        return this.element.getBoundingClientRect();
-    }
-    getFutureRectangle() {
-        return this.element.getBoundingClientRect();
     }
 }
 //# sourceMappingURL=ball.js.map

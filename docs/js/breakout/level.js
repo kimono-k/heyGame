@@ -13,6 +13,7 @@ export class Level {
     update() {
         this.ball.update();
         this.paddle.update();
+        this.checkBallPaddleCollision();
     }
     init(level) {
         this.paddle = new Paddle;
@@ -29,6 +30,12 @@ export class Level {
     changeLives(amount) {
     }
     changeScore(amount) {
+    }
+    checkBallPaddleCollision() {
+        let hit = this.gameInstance.checkCollision(this.ball.getRectancle(), this.paddle.getRectancle());
+        if (hit) {
+            this.ball.bounceY();
+        }
     }
 }
 //# sourceMappingURL=level.js.map
