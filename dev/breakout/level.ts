@@ -1,8 +1,6 @@
-import { Border } from "./border.js";
 import { Paddle } from "./paddle.js";
 import { Ball } from "./ball.js";
 import { BrickGrid } from "./brickgrid.js";
-
 import { Game } from "./game.js"
 
 export class Level {
@@ -18,7 +16,6 @@ export class Level {
     private isGameOver : boolean = false
     private levelType : number = 1
     private level : number = 1
-    private border : Border
     private paddle : Paddle
     private ball : Ball
     private brickGrid : BrickGrid
