@@ -1,5 +1,5 @@
-import { Vector } from "../oldsnake/includes/vector.js";
-import { SnakeEngine } from "../oldsnake/snakeEngine.js";
+import { Vector } from "./math/vector.js";
+import { SnakeEngine } from "./snakeEngine.js";
 
 interface Touch {
     identifier: number;
@@ -9,7 +9,7 @@ interface Touch {
 };
 
 export class TouchManager {
-    private engine: SnakeEngine;
+    public engine: SnakeEngine;
     // id of touch that's being followed (-1 if mouse)
     private trackId: number;
     private activeTracking: boolean = false;
@@ -51,12 +51,14 @@ export class TouchManager {
 
     // only triggers if touch has the same id as the one being kept track of
     public onTouchUp(e: Touch) {
-        let vDown = new Vector(this.downTouch.pageX, this.downTouch.pageY).multiply(this.engine.pxMult.pow(-1));
-        let vUp = new Vector(e.pageX, e.pageY).multiply(this.engine.pxMult.pow(-1));
+        let vDown = new Vector(this.downTouch.pageX, this.downTouch.pageY).divide(this.engine.resMult);
+        let vUp = new Vector(e.pageX, e.pageY).divide(this.engine.resMult);
 
-        this.lastTap = vUp.multiply(this.engine.pxMult.pow(-1));
+        this.lastTap = vUp.divide(this.engine.resMult);
 
         let touchDiff = vUp.subtract(vDown);
+
+        // console.log('jo')
 
         if (touchDiff.length > this.swipeTreshold) {
             this.lastSwipe = touchDiff;
@@ -76,9 +78,18 @@ export class TouchManager {
         }
     }
 
+    public initListeners(div= document) {
+        div.addEventListener('touchstart', (e) => { this.onTouchDown(e.changedTouches[0]) }, false);
+        div.addEventListener('touchend', (e) => { this.onTouchEventUp(e) }, false);
+        div.addEventListener('touchmove', (e) => { this.onTouchEventMove(e) }, false);
+        div.addEventListener('mousedown', (e) => { this.onTouchDown(this.engine.fakeTouchEvent(e)) }, false);
+        div.addEventListener('mouseup', (e) => { this.onTouchUp(this.engine.fakeTouchEvent(e)) }, false);
+        div.addEventListener('mousemove', (e) => { this.onTouchMove(this.engine.fakeTouchEvent(e)) }, false);
+    }
+
     // tracks any form of movement from the tracked touch
     public onTouchMove(e: Touch) {
-        this.lastMove = new Vector(e.pageX, e.pageY).multiply(this.engine.pxMult.pow(-1));
+        this.lastMove = new Vector(e.pageX, e.pageY).divide(this.engine.resMult);
     }
 
     public update() {

@@ -4,9 +4,9 @@ import { TouchManager } from "../touchManager.js";
 
 export class GameComponent {
     protected touch: TouchManager;
-    protected engine: SnakeEngine;
+    public engine: SnakeEngine;
     public div: HTMLElement;
-    public position: Vector;
+    public position: Vector = new Vector(0, 0);
     public size: Vector;
 
     constructor(tag = 'div', classes: string[] = []) {

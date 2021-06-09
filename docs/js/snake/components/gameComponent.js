@@ -1,5 +1,7 @@
+import { Vector } from "../math/vector.js";
 export class GameComponent {
     constructor(tag = 'div', classes = []) {
+        this.position = new Vector(0, 0);
         this.div = document.createElement(tag);
         for (let c of classes)
             this.div.classList.add(c);

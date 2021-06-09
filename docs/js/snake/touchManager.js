@@ -1,4 +1,4 @@
-import { Vector } from "../oldsnake/includes/vector.js";
+import { Vector } from "./math/vector.js";
 ;
 export class TouchManager {
     constructor() {
@@ -27,9 +27,9 @@ export class TouchManager {
         }
     }
     onTouchUp(e) {
-        let vDown = new Vector(this.downTouch.pageX, this.downTouch.pageY).multiply(this.engine.pxMult.pow(-1));
-        let vUp = new Vector(e.pageX, e.pageY).multiply(this.engine.pxMult.pow(-1));
-        this.lastTap = vUp.multiply(this.engine.pxMult.pow(-1));
+        let vDown = new Vector(this.downTouch.pageX, this.downTouch.pageY).divide(this.engine.resMult);
+        let vUp = new Vector(e.pageX, e.pageY).divide(this.engine.resMult);
+        this.lastTap = vUp.divide(this.engine.resMult);
         let touchDiff = vUp.subtract(vDown);
         if (touchDiff.length > this.swipeTreshold) {
             this.lastSwipe = touchDiff;
@@ -46,8 +46,16 @@ export class TouchManager {
             }
         }
     }
+    initListeners(div = document) {
+        div.addEventListener('touchstart', (e) => { this.onTouchDown(e.changedTouches[0]); }, false);
+        div.addEventListener('touchend', (e) => { this.onTouchEventUp(e); }, false);
+        div.addEventListener('touchmove', (e) => { this.onTouchEventMove(e); }, false);
+        div.addEventListener('mousedown', (e) => { this.onTouchDown(this.engine.fakeTouchEvent(e)); }, false);
+        div.addEventListener('mouseup', (e) => { this.onTouchUp(this.engine.fakeTouchEvent(e)); }, false);
+        div.addEventListener('mousemove', (e) => { this.onTouchMove(this.engine.fakeTouchEvent(e)); }, false);
+    }
     onTouchMove(e) {
-        this.lastMove = new Vector(e.pageX, e.pageY).multiply(this.engine.pxMult.pow(-1));
+        this.lastMove = new Vector(e.pageX, e.pageY).divide(this.engine.resMult);
     }
     update() {
         this.justTapped = false;
