@@ -1,9 +1,9 @@
 import { FallingItem } from "./fallingitem.js";
+import { GameObject } from "./gameObject.js";
 
-export class Brick {
+export class Brick extends GameObject{
     // Parameters
     // Fields    
-    private element : HTMLElement
     private row  : number
     private column : number
     private itemtype : string
@@ -17,6 +17,7 @@ export class Brick {
 
     // Constructor
     constructor(row : number, column : number, breakstatus : number = 2, color : string = "blue", itemtype : string = "default", item : string, hidden : boolean = false) {
+        super()
         this.spawn()
     }
     

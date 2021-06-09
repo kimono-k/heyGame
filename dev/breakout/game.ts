@@ -1,6 +1,6 @@
 import { Level } from "./level.js";
 
-class Game {
+export class Game {
     // Parameters
     // Fields    
     private element : HTMLElement

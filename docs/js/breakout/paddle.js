@@ -44,6 +44,7 @@ export class Paddle {
         }
     }
     checkBorderCollision(a, b) {
+        game.checkCollision(a, b);
     }
     getRectancle() {
         return this.element.getBoundingClientRect();

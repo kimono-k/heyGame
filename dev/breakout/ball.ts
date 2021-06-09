@@ -1,19 +1,13 @@
 import { Game } from "./game.js"
+import { GameObject } from "./gameObject.js"
 
-export class Ball {
+export class Ball extends GameObject{
     // Parameters
     // Fields    
-    private element : HTMLElement
     private gameInstance : Game
-
-    private posX : number = 500
-    private posY : number = 100
-    private speedX : number = 1
     private speedY : number = -1
     private sticky : boolean = false
     private inputUse : number  
-    private scale : number = 0.3
-
     public levelWidth : number
     public levelHeight : number
 
@@ -21,46 +15,31 @@ export class Ball {
 
     // Constructor
     constructor(gameInstance : Game){
+        super()
         this.gameInstance = gameInstance
-        this.spawn();
+        super.spawn("ball")
+        super.posX = 500
+        super.posY = 100
+        super.speedX = 1
     }
 
     // Functions
 
     // gameloop
     public update() : void {
-        this.posX += this.speedX
+        super.update()
         this.posY += this.speedY
-        
-        this.element.style.transform = `matrix(${this.scale}, 0 , 0, ${this.scale}, ${this.posX}, ${this.posY})`
         
         this.checkBorderCollision()
     }
 
     // general functions 
-    public spawn() : void {
-        this.element = document.createElement("ball");
-
-        let level = document.querySelector("level");
-
-        level.appendChild(this.element);
-
-        console.log("spawn ball")
-    }
-
-    public reset() : void {
-        // TODO: kill element
-
-        // TODO: reset all numbers
-
-        this.spawn()
-    }
 
     // collision
     public checkBorderCollision() {
         let rightBorder = this.gameInstance.levelWidth - this.element.clientWidth * this.scale * 2.2
         let bottemBorder = this.gameInstance.levelHeight - this.element.clientHeight * this.scale * 2.2
-
+    
         console.log(this.element.clientWidth * this.scale)
         
         if(this.posY > bottemBorder || this.posY < 0 - this.element.clientWidth * this.scale * 1.2) {
@@ -96,13 +75,5 @@ export class Ball {
         // TODO: toggle stick
     }
 
-    // glabal funtions
-    public getRectangle() : ClientRect {
-        return this.element.getBoundingClientRect()
-    }
 
-    public getFutureRectangle() : ClientRect {
-        // TODO: getFutureRectangle
-        return this.element.getBoundingClientRect()
-    }
 }

@@ -196,7 +196,7 @@ input[type="submit"] {
     color: var(--onprimary-color);
 
     margin: 15px;
-    width: 15vw; 
+    width: 20vw; 
     padding: 10px 10px;
     border: none;
     border-radius: 5px;
@@ -206,7 +206,7 @@ input[type="submit"] {
 
     text-align: center;
     text-decoration: none;
-    font-size: 2em;
+    font-size: vmax;
 
     cursor: pointer;
 }
