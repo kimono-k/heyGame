@@ -29,7 +29,7 @@ export class TouchManager {
     onTouchUp(e) {
         let vDown = new Vector(this.downTouch.pageX, this.downTouch.pageY).divide(this.engine.resMult);
         let vUp = new Vector(e.pageX, e.pageY).divide(this.engine.resMult);
-        this.lastTap = vUp.divide(this.engine.resMult);
+        this.lastTap = vUp;
         let touchDiff = vUp.subtract(vDown);
         if (touchDiff.length > this.swipeTreshold) {
             this.lastSwipe = touchDiff;
