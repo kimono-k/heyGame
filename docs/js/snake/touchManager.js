@@ -1,27 +1,21 @@
-import { Vector } from "../vector.js";
-import { NodeEventGenerator } from "./nodeEventGenerator.js";
+import { Vector } from "../oldsnake/includes/vector.js";
 ;
-export class TouchManager extends NodeEventGenerator {
-    constructor(swipeTreshold = 10) {
-        super();
+export class TouchManager {
+    constructor() {
+        this.activeTracking = false;
+        this.swipeTreshold = 7;
         this.justTapped = false;
         this.justSwiped = false;
         this.justMoved = false;
-        this.trackId = 0;
-        this.activeTracking = false;
-        this.swipeTreshold = 10;
-        this.swipeTreshold = swipeTreshold;
     }
     onTouchEventDown(e) {
-        e.preventDefault();
         this.onTouchDown(e.changedTouches[0]);
     }
     onTouchDown(e) {
         if (!this.activeTracking) {
-            this.downEvent = e;
+            this.downTouch = e;
             this.trackId = e.identifier;
             this.activeTracking = true;
-            this.trigger('touchDown', { 'touchEvent': e });
         }
     }
     onTouchEventUp(e) {
@@ -33,18 +27,16 @@ export class TouchManager extends NodeEventGenerator {
         }
     }
     onTouchUp(e) {
-        let vDown = new Vector(this.downEvent.pageX, this.downEvent.pageY).multiply(this.engine.pxMult.pow(-1));
+        let vDown = new Vector(this.downTouch.pageX, this.downTouch.pageY).multiply(this.engine.pxMult.pow(-1));
         let vUp = new Vector(e.pageX, e.pageY).multiply(this.engine.pxMult.pow(-1));
         this.lastTap = vUp.multiply(this.engine.pxMult.pow(-1));
         let touchDiff = vUp.subtract(vDown);
         if (touchDiff.length > this.swipeTreshold) {
             this.lastSwipe = touchDiff;
             this.justSwiped = true;
-            this.trigger('swiped', { 'swipe': this.lastSwipe });
         }
         this.justTapped = true;
         this.activeTracking = false;
-        this.trigger('touchUp', { 'touchEvent': e });
     }
     onTouchEventMove(e) {
         e.preventDefault();
@@ -56,7 +48,6 @@ export class TouchManager extends NodeEventGenerator {
     }
     onTouchMove(e) {
         this.lastMove = new Vector(e.pageX, e.pageY).multiply(this.engine.pxMult.pow(-1));
-        this.trigger('touchMove', { 'touchEvent': e });
     }
     update() {
         this.justTapped = false;

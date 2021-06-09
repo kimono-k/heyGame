@@ -10,17 +10,6 @@ export class Vector {
         this.y = y;
     }
 
-    public distanceTo(v: Vector): number {
-        let diff = new Vector(v.x - this.x, v.y - this.y);
-        return diff.length;
-    }
-
-    public normalized(): Vector {
-        let l = this.length;
-        if (l === 0) return this;
-        return new Vector(this.x / l, this.y / l);
-    }
-
     public add(v: Vector): Vector {
         return new Vector(this.x + v.x, this.y + v.y);
     }
@@ -45,10 +34,6 @@ export class Vector {
     public divide(n: number | Vector): Vector {
         if (typeof(n) == 'number') return new Vector(this.x / n, this.y / n);
         else return new Vector(this.x / n.x, this.y / n.y);
-    }
-
-    public pow(n: number) {
-        return new Vector(this.x ** n, this.y ** n);
     }
 
     public get length(): number {
