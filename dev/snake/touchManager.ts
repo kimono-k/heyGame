@@ -54,7 +54,7 @@ export class TouchManager {
         let vDown = new Vector(this.downTouch.pageX, this.downTouch.pageY).divide(this.engine.resMult);
         let vUp = new Vector(e.pageX, e.pageY).divide(this.engine.resMult);
 
-        this.lastTap = vUp.divide(this.engine.resMult);
+        this.lastTap = vUp;
 
         let touchDiff = vUp.subtract(vDown);
 

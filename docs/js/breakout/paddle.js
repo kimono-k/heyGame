@@ -1,25 +1,16 @@
-export class Paddle {
+import { GameObject } from "./gameObject.js";
+export class Paddle extends GameObject {
     constructor() {
-        this.speedX = 0;
-        this.inputLeft = 65;
-        this.inputRight = 68;
-        this.spawn();
+        super();
+        super.spawn("paddle");
+        super.speedX = 0;
+        super.posX = 300;
+        super.posY = 500;
         window.addEventListener("keyup", (e) => this.onKeyUp(e));
         window.addEventListener("keydown", (e) => this.onKeyDown(e));
     }
     update() {
-        this.posX += this.speedX;
-        this.element.style.transform = `translate(${this.posX}px, ${this.posY}px)`;
-    }
-    spawn() {
-        this.element = document.createElement("paddle");
-        let level = document.querySelector("level");
-        level.appendChild(this.element);
-        console.log("Paddle was created");
-        this.posX = 300;
-        this.posY = 500;
-    }
-    reset() {
+        super.update();
     }
     onKeyDown(e) {
         switch (e.key) {
@@ -42,15 +33,6 @@ export class Paddle {
                 this.speedX = 0;
                 break;
         }
-    }
-    checkBorderCollision(a, b) {
-        game.checkCollision(a, b);
-    }
-    getRectancle() {
-        return this.element.getBoundingClientRect();
-    }
-    getFutureRectangle() {
-        return this.element.getBoundingClientRect();
     }
 }
 //# sourceMappingURL=paddle.js.map

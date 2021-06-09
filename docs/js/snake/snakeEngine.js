@@ -3,15 +3,17 @@ import { Segment } from "./components/segment.js";
 import { Vector } from "./math/vector.js";
 import { TouchManager } from "./touchManager.js";
 export class SnakeEngine {
-    constructor(gameDiv) {
+    constructor(gameDiv, inputType = 'swipe') {
         this.letterPos = [];
         this.snakeDivs = [];
         this.snakePos = [];
         this.snakeTarget = [];
-        this.toEat = false;
+        this.toGrow = false;
         this.snakeDir = new Vector(1, 0);
         this.moveTime = 0.5;
         this.moveTimer = 0;
+        this.visualOffset = 0;
+        this.inputType = 'swipe';
         this.size = new Vector(12, 8);
         this.segmentSize = 10;
         this.letters = [];
@@ -20,6 +22,7 @@ export class SnakeEngine {
         this.currentWord = 'Dani';
         this.gameDiv = gameDiv;
         this.initInput();
+        this.inputType = inputType;
         this.createSnakeSegment(new Vector(3, 3));
         this.createSnakeSegment(new Vector(4, 3));
         this.createSnakeSegment(new Vector(5, 3));
@@ -29,7 +32,6 @@ export class SnakeEngine {
         this.resMult = mult;
         this.calcTarget();
         this.touch.initListeners();
-        this.generateLetter('d');
         console.log('game constructed!');
     }
     update(ms) {
@@ -56,13 +58,27 @@ export class SnakeEngine {
             pageY: e.pageY
         };
     }
-    swipeHandler(touchDiff) {
+    movePos(touchPos) {
+        let divRect = this.gameDiv.getBoundingClientRect();
+        let touchOffset = new Vector(divRect.x, divRect.y);
+        let headPos = this.snakeDivs[this.snakeDivs.length - 1].position.multiply(1);
+        let touchDiff = touchPos.subtract(headPos).subtract(touchOffset.divide(this.resMult));
+        this.moveDiff(touchDiff);
+    }
+    moveDiff(touchDiff) {
         let touchX = (Math.abs(touchDiff.x) > Math.abs(touchDiff.y))
             ? Math.sign(touchDiff.x) : 0;
         let touchY = (Math.abs(touchDiff.x) < Math.abs(touchDiff.y))
             ? Math.sign(touchDiff.y) : 0;
-        if ((this.snakeDir.x === 0) === (touchY === 0)) {
-            this.snakeDir = new Vector(touchX, touchY);
+        this.moveDir(new Vector(touchX, touchY));
+    }
+    moveDir(touchDir) {
+        if ((this.snakeDir.x === 0) === (touchDir.y === 0)) {
+            this.snakeDir = new Vector(touchDir.x, touchDir.y);
+        }
+        if (this.moveTimer < 0.15) {
+            this.calcTarget();
+            this.visualOffset = this.moveTimer;
         }
     }
     isOccupied(pos) {
@@ -131,11 +147,12 @@ export class SnakeEngine {
     }
     moveSnake() {
         this.snakePos = this.snakeTarget;
-        if (this.toEat) {
+        if (this.toGrow) {
             let segment = this.createSnakeSegment(this.snakePos[0], true);
             segment.engine = this;
-            this.toEat = false;
+            this.toGrow = false;
         }
+        this.visualOffset = 0;
         this.calcTarget();
     }
     eatLetter(i) {
@@ -144,27 +161,33 @@ export class SnakeEngine {
         this.letterPos.splice(i, 1);
         this.letters.splice(i, 1);
         letter.eat();
+        this.algo.onEat(letter.letter);
+    }
+    grow() {
+        this.toGrow = true;
     }
     snakeUpdate() {
         this.moveTimer += this.delta * 20 / 1000 * Math.pow(this.moveTime, -1);
-        if (this.touch.justSwiped) {
-            this.swipeHandler(this.touch.lastSwipe);
+        if (this.inputType === 'swipe' && this.touch.justSwiped) {
+            this.moveDiff(this.touch.lastSwipe);
+        }
+        else if (this.inputType === 'tap' && this.touch.justTapped) {
+            this.movePos(this.touch.lastTap);
         }
         if (this.moveTimer >= 1) {
             let snakeHead = this.snakeTarget[this.snakeTarget.length - 1];
             for (let i = 0; i < this.letterPos.length; i++) {
                 let l = this.letterPos[i];
                 if (l.x === snakeHead.x && l.y === snakeHead.y) {
-                    this.toEat = true;
                     this.eatLetter(i);
-                    this.generateLetter();
                 }
             }
             this.moveSnake();
             this.moveTimer = 0;
             console.log('moved a square!');
         }
-        this.updateSnakePos(this.moveTimer);
+        let offset = (this.moveTimer - this.visualOffset) * (1 / (1 - this.visualOffset));
+        this.updateSnakePos(offset);
     }
     initInput() {
         let touch = new TouchManager;
@@ -173,7 +196,12 @@ export class SnakeEngine {
     }
     start() {
         this.render();
+        this.algo.start();
         window.requestAnimationFrame((ms) => this.update(ms));
+    }
+    set level(level) {
+        this.algo = level;
+        level.engine = this;
     }
     get w() {
         return this.size.x;
