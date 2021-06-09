@@ -1,21 +1,22 @@
-export class Paddle {
-    // Parameters
-    // Fields    
-    private element : HTMLElement
-    private posX : number
-    private posY : number
+import { GameObject } from "./gameObject.js";
+
+export class Paddle extends GameObject{
+
     // private posX : number = window.innerWidth / 2
     // private posY : number = window.innerHeight - 10
-    private speedX : number = 0
-    private inputLeft : number = 65
-    private inputRight : number = 68
+    // private inputLeft : number = 65
+    // private inputRight : number = 68
     
 
     // Properties
 
     // Constructor
     constructor(){
-        this.spawn();
+        super()
+        super.spawn("paddle")
+        super.speedX = 0;
+        super.posX = 300
+        super.posY = 500
 
         window.addEventListener("keyup", (e:KeyboardEvent) => this.onKeyUp(e))
         window.addEventListener("keydown", (e:KeyboardEvent) => this.onKeyDown(e))
@@ -25,29 +26,10 @@ export class Paddle {
 
     // gameloop
     public update() : void {
-        //update the paddle so it can move
-        this.posX += this.speedX
-
-        //draw the sprite on the right pace
-        this.element.style.transform = `translate(${this.posX}px, ${this.posY}px)`
+        super.update()
     }
 
     // general functions 
-    public spawn() : void {
-        this.element = document.createElement("paddle");
-        let level = document.querySelector("level");
-        level.appendChild(this.element);
-        console.log("Paddle was created");
-
-        //Create x and y values
-        this.posX = 300;
-        this.posY = 500;
-    }
-
-    public reset() : void {
-        //TODO reset the whole class
-    }
-
     // keybinds
     private onKeyDown(e: KeyboardEvent) : void {
         switch (e.key) {
@@ -74,20 +56,6 @@ export class Paddle {
     }
 
     // collision
-    public checkBorderCollision(a: ClientRect, b: ClientRect) {
-    //   game.checkCollision(a, b)
-    }
 
-    // global functions
-    public getRectancle() : ClientRect {
-        //TODO get the rectangle for the collision
-        return this.element.getBoundingClientRect()
-      
-    }
-
-    public getFutureRectangle() : ClientRect {
-        // TODO: getFutureRectangle
-        return this.element.getBoundingClientRect()
-    }
 
 }
