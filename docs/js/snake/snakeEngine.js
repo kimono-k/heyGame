@@ -4,7 +4,6 @@ import { Vector } from "./math/vector.js";
 import { TouchManager } from "./touchManager.js";
 export class SnakeEngine {
     constructor(gameDiv, inputType = 'swipe') {
-        this.letterPos = [];
         this.snakeDivs = [];
         this.snakePos = [];
         this.snakeTarget = [];
@@ -19,6 +18,7 @@ export class SnakeEngine {
         this.size = new Vector(12, 8);
         this.segmentSize = 10;
         this.letters = [];
+        this.letterPos = [];
         this.delta = 1;
         this.deltaTimestamp = 1;
         this.currentWord = 'Dani';
@@ -181,8 +181,7 @@ export class SnakeEngine {
     eatLetter(i) {
         let letter = this.letters[i];
         letter.div.remove();
-        this.letterPos.splice(i, 1);
-        this.letters.splice(i, 1);
+        letter.div.remove();
         letter.eat();
         this.algo.onEat(letter.letter);
     }
@@ -254,9 +253,21 @@ export class SnakeEngine {
         this.unPause();
         window.requestAnimationFrame((ms) => this.update(ms));
     }
+    set fullText(s) {
+        document.getElementById('progressBG').innerText = s;
+    }
+    set progressText(s) {
+        document.getElementById('progressBar').innerText = s;
+    }
+    get progressText() {
+        return document.getElementById('progressBar').innerText;
+    }
     set level(level) {
         this.algo = level;
         level.engine = this;
+    }
+    get level() {
+        return this.algo;
     }
     get w() {
         return this.size.x;

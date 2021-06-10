@@ -7,7 +7,6 @@ import { TouchManager } from "./touchManager.js";
 
 export class SnakeEngine {
     private gameDiv: HTMLElement;
-    private letterPos: Vector[] = [];
     private snakeDivs: Segment[] = [];
     private snakePos: Vector[] = [];
     private snakeTarget: Vector[] = [];
@@ -22,6 +21,7 @@ export class SnakeEngine {
     public size: Vector = new Vector(12, 8);
     public segmentSize = 10;
     public letters: Letter[] = [];
+    public letterPos: Vector[] = [];
     public resMult: number;
     public delta = 1;
     public deltaTimestamp = 1;
@@ -225,8 +225,7 @@ export class SnakeEngine {
     eatLetter(i: number) {
         let letter = this.letters[i];
         letter.div.remove();
-        this.letterPos.splice(i, 1);
-        this.letters.splice(i, 1);
+        letter.div.remove();
         letter.eat();
         this.algo.onEat(letter.letter);
     }
@@ -311,9 +310,25 @@ export class SnakeEngine {
         window.requestAnimationFrame((ms) => this.update(ms));
     }
 
+    set fullText(s: string) {
+        document.getElementById('progressBG').innerText = s;
+    }
+
+    set progressText(s: string) {
+        document.getElementById('progressBar').innerText = s;
+    }
+
+    get progressText() {
+        return document.getElementById('progressBar').innerText;
+    }
+
     set level(level: BaseLevel) {
         this.algo = level;
         level.engine = this;
+    }
+
+    get level() {
+        return this.algo;
     }
 
     get w() {

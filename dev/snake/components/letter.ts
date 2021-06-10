@@ -13,5 +13,6 @@ export class Letter extends GameComponent {
     public eat() {
         let i = this.engine.letters.indexOf(this);
         this.engine.letters.splice(i, 1);
+        this.engine.letterPos.splice(i, 1);
     }
 }
