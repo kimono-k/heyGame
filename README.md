@@ -60,12 +60,15 @@ V0.7
     - simpel level gemaakt
 - snake changelog vertaald want beetje dom als half NL half EN is
 
+V0.8
+
+- snake kan sterven
+    - je gaat dood als je jezelf raakt
+    - je gaat dood als je de rand raakt
+    - scherm voor wanneer je dood bent om te restarten
 
 ## to do
 
-- functionaliteit om te sterven
-- snake dood wanneer tegen de rand
-- snake dood wanneer tegen snake
 - woord onderin scherm laten verschijnen
 - letters van woord tegelijk genereren
 - nieuw woord wanneer woord is gepakt

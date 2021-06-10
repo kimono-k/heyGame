@@ -1,4 +1,4 @@
-export class LevelBeginner {
+export class RandomLetters {
     constructor() {
         this.possibleLetters = "ABDEFGIJKLMNOPRSTUVZ";
     }

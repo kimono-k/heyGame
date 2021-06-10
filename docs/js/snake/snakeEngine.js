@@ -8,12 +8,14 @@ export class SnakeEngine {
         this.snakeDivs = [];
         this.snakePos = [];
         this.snakeTarget = [];
-        this.toGrow = false;
         this.snakeDir = new Vector(1, 0);
         this.moveTime = 0.5;
         this.moveTimer = 0;
         this.visualOffset = 0;
         this.inputType = 'swipe';
+        this.paused = false;
+        this.toGrow = false;
+        this.toDie = false;
         this.size = new Vector(12, 8);
         this.segmentSize = 10;
         this.letters = [];
@@ -23,24 +25,31 @@ export class SnakeEngine {
         this.gameDiv = gameDiv;
         this.initInput();
         this.inputType = inputType;
-        this.createSnakeSegment(new Vector(3, 3));
-        this.createSnakeSegment(new Vector(4, 3));
-        this.createSnakeSegment(new Vector(5, 3));
-        this.createSnakeSegment(new Vector(6, 3));
+        document.getElementById('restartButton').addEventListener('click', () => { this.start(); });
         let screen = gameDiv.getBoundingClientRect();
         let mult = Math.min(screen.width / 120, screen.height / 80);
         this.resMult = mult;
-        this.calcTarget();
         this.touch.initListeners();
         console.log('game constructed!');
+    }
+    pause() {
+        this.paused = true;
+        this.gameDiv.style.opacity = '0.25';
+    }
+    unPause() {
+        this.paused = false;
+        this.gameDiv.style.opacity = '1';
     }
     update(ms) {
         this.delta = (ms - this.deltaTimestamp) / 1000 * 60;
         this.deltaTimestamp = ms;
         this.snakeUpdate();
+        if (this.paused)
+            return;
         this.render();
         this.touch.update();
-        window.requestAnimationFrame((ms) => this.update(ms));
+        if (!this.paused)
+            window.requestAnimationFrame((ms) => this.update(ms));
     }
     render() {
         for (let c of this.letters) {
@@ -83,11 +92,11 @@ export class SnakeEngine {
     }
     isOccupied(pos) {
         for (let v of this.snakePos) {
-            if (v.x === pos.x && v.y === pos.y)
+            if (v.x === pos.x && v.y == pos.y)
                 return true;
         }
         for (let v of this.letterPos) {
-            if (v.x === pos.x && v.y === pos.y)
+            if (v.x == pos.x && v.y == pos.y)
                 return true;
         }
         return false;
@@ -144,6 +153,20 @@ export class SnakeEngine {
         let lastSegment = targetPos[targetPos.length - 1];
         targetPos.push(lastSegment.add(this.snakeDir));
         this.snakeTarget = targetPos;
+        this.collideSnake();
+    }
+    collideSnake() {
+        let snakeHead = this.snakeTarget[this.snakeTarget.length - 1];
+        if (snakeHead.y < 0 || snakeHead.y >= this.h + 1 ||
+            snakeHead.x < 0 || snakeHead.x >= this.w) {
+            this.toDie = true;
+        }
+        for (let i = 0; i < this.snakeTarget.length - 1; i++) {
+            let segment = this.snakeTarget[i];
+            if (snakeHead.x == segment.x && snakeHead.y == segment.y) {
+                this.toDie = true;
+            }
+        }
     }
     moveSnake() {
         this.snakePos = this.snakeTarget;
@@ -174,6 +197,9 @@ export class SnakeEngine {
         else if (this.inputType === 'tap' && this.touch.justTapped) {
             this.movePos(this.touch.lastTap);
         }
+        if (this.moveTimer >= 0.15 && this.toDie) {
+            this.die();
+        }
         if (this.moveTimer >= 1) {
             let snakeHead = this.snakeTarget[this.snakeTarget.length - 1];
             for (let i = 0; i < this.letterPos.length; i++) {
@@ -182,6 +208,8 @@ export class SnakeEngine {
                     this.eatLetter(i);
                 }
             }
+            if (this.paused)
+                return;
             this.moveSnake();
             this.moveTimer = 0;
             console.log('moved a square!');
@@ -189,14 +217,41 @@ export class SnakeEngine {
         let offset = (this.moveTimer - this.visualOffset) * (1 / (1 - this.visualOffset));
         this.updateSnakePos(offset);
     }
+    die() {
+        this.pause();
+        document.getElementById('deathMenu').style.display = 'block';
+    }
     initInput() {
         let touch = new TouchManager;
         touch.engine = this;
         this.touch = touch;
     }
+    clearDivs() {
+        for (let d of this.letters) {
+            d.div.remove();
+        }
+        for (let d of this.snakeDivs) {
+            d.div.remove();
+        }
+        this.letters = [];
+        this.letterPos = [];
+        this.snakeDivs = [];
+        this.snakePos = [];
+    }
     start() {
+        document.getElementById('deathMenu').style.display = 'none';
+        this.clearDivs();
         this.render();
         this.algo.start();
+        this.createSnakeSegment(new Vector(1, 4));
+        this.createSnakeSegment(new Vector(2, 4));
+        this.createSnakeSegment(new Vector(3, 4));
+        this.createSnakeSegment(new Vector(4, 4));
+        this.toGrow = false;
+        this.toDie = false;
+        this.snakeDir = new Vector(1, 0);
+        this.calcTarget();
+        this.unPause();
         window.requestAnimationFrame((ms) => this.update(ms));
     }
     set level(level) {

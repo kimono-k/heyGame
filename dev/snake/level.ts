@@ -6,7 +6,7 @@ export interface BaseLevel {
     onEat: (letter: string) => void;
 }
 
-export class LevelBeginner implements BaseLevel {
+export class RandomLetters implements BaseLevel {
     public engine: SnakeEngine;
     public possibleLetters = "ABDEFGIJKLMNOPRSTUVZ"
 

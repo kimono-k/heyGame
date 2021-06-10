@@ -40,3 +40,7 @@ body {
 .gameLetter {
     z-index: -10;
 }
+
+#deathMenu {
+    z-index: 100;
+}
