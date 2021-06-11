@@ -67,11 +67,14 @@ V0.8
     - je gaat dood als je de rand raakt
     - scherm voor wanneer je dood bent om te restarten
 
+V0.9
+
+- tekst toegevoegd onderaan scherm
+    - de tekst kan als soort progressiebalk worden gebruikt, twee divs over elkaar met andere kleur
+- mogelijke levels gemaakt
+
 ## to do
 
-- woord onderin scherm laten verschijnen
-- letters van woord tegelijk genereren
-- nieuw woord wanneer woord is gepakt
 - cool effect ofzo wanneer woord is gepakt
 - sprites
 - geanimeerde sprites
