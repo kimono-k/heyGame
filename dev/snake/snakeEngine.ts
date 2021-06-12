@@ -43,6 +43,7 @@ export class SnakeEngine {
         this.resMult = mult;
 
         this.touch.initListeners();
+        this.touch.resMult = this.resMult;
 
         console.log('game constructed!');
     }
@@ -76,16 +77,6 @@ export class SnakeEngine {
         }
         for (let c of this.snakeDivs) {
             c.update();
-        }
-    }
-
-    // converts a mouseEvent to a Touch
-    public fakeTouchEvent(e: MouseEvent) {
-        return {
-            identifier: -1,
-            target: e.target,
-            pageX: e.pageX,
-            pageY: e.pageY
         }
     }
 
@@ -272,7 +263,7 @@ export class SnakeEngine {
     private initInput() {
         let touch = new TouchManager;
 
-        touch.engine = this;
+        touch.resMult = this.resMult;
         this.touch = touch;
     }
 
