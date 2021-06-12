@@ -1,25 +1,19 @@
-export class Paddle {
-    constructor() {
+import { GameObject } from "./gameObject.js";
+export class Paddle extends GameObject {
+    constructor(gameInstance) {
+        super();
+        super.spawn("paddle");
         this.speedX = 0;
-        this.inputLeft = 65;
-        this.inputRight = 68;
-        this.spawn();
+        this.posX = 300;
+        this.posY = 500;
+        this.scale = 1;
+        this.gameInstance = gameInstance;
         window.addEventListener("keyup", (e) => this.onKeyUp(e));
         window.addEventListener("keydown", (e) => this.onKeyDown(e));
     }
     update() {
-        this.posX += this.speedX;
-        this.element.style.transform = `translate(${this.posX}px, ${this.posY}px)`;
-    }
-    spawn() {
-        this.element = document.createElement("paddle");
-        let level = document.querySelector("level");
-        level.appendChild(this.element);
-        console.log("Paddle was created");
-        this.posX = 300;
-        this.posY = 500;
-    }
-    reset() {
+        super.update();
+        this.checkBorderCollision();
     }
     onKeyDown(e) {
         switch (e.key) {
@@ -43,14 +37,12 @@ export class Paddle {
                 break;
         }
     }
-    checkBorderCollision(a, b) {
-        game.checkCollision(a, b);
-    }
-    getRectancle() {
-        return this.element.getBoundingClientRect();
-    }
-    getFutureRectangle() {
-        return this.element.getBoundingClientRect();
+    checkBorderCollision() {
+        console.log(this.posX);
+        if (this.posX <= 0 || this.posX >= 550) {
+            console.log("You touched the border");
+            this.speedX = 0;
+        }
     }
 }
 //# sourceMappingURL=paddle.js.map

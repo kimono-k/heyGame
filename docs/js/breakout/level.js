@@ -15,7 +15,7 @@ export class Level {
         this.paddle.update();
     }
     init(level) {
-        this.paddle = new Paddle;
+        this.paddle = new Paddle(this.gameInstance);
         this.ball = new Ball(this.gameInstance);
     }
     reset() {
