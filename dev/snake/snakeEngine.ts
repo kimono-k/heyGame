@@ -263,7 +263,7 @@ export class SnakeEngine {
     private initInput() {
         let touch = new TouchManager;
 
-        touch.engine = this;
+        touch.resMult = this.resMult;
         this.touch = touch;
     }
 

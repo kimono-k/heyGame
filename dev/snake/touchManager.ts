@@ -8,12 +8,7 @@ interface Touch {
     pageY: number;
 };
 
-interface GameEngine {
-    resMult: number;
-}
-
 export class TouchManager {
-    public engine: GameEngine;
     // id of touch that's being followed (-1 if mouse)
     private trackId: number;
     private activeTracking: boolean = false;
@@ -57,8 +52,8 @@ export class TouchManager {
 
     // only triggers if touch has the same id as the one being kept track of
     public onTouchUp(e: Touch) {
-        let vDown = new Vector(this.downTouch.pageX, this.downTouch.pageY).divide(this.engine.resMult);
-        let vUp = new Vector(e.pageX, e.pageY).divide(this.engine.resMult);
+        let vDown = new Vector(this.downTouch.pageX, this.downTouch.pageY).divide(this.resMult);
+        let vUp = new Vector(e.pageX, e.pageY).divide(this.resMult);
 
         this.lastTap = vUp;
 
@@ -105,7 +100,7 @@ export class TouchManager {
 
     // tracks any form of movement from the tracked touch
     public onTouchMove(e: Touch) {
-        this.lastMove = new Vector(e.pageX, e.pageY).divide(this.engine.resMult);
+        this.lastMove = new Vector(e.pageX, e.pageY).divide(this.resMult);
     }
 
     public update() {
