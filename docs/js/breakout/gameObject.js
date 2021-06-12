@@ -1,4 +1,7 @@
 export class GameObject {
+    constructor() {
+        this.scale = 0.3;
+    }
     update() {
         this.posX += this.speedX;
         this.element.style.transform = `matrix(${this.scale}, 0 , 0, ${this.scale}, ${this.posX}, ${this.posY})`;

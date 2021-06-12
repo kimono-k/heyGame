@@ -1,27 +1,21 @@
-import { Vector } from "../vector.js";
-import { NodeEventGenerator } from "./nodeEventGenerator.js";
+import { Vector } from "./math/vector.js";
 ;
-export class TouchManager extends NodeEventGenerator {
-    constructor(swipeTreshold = 10) {
-        super();
+export class TouchManager {
+    constructor() {
+        this.activeTracking = false;
+        this.swipeTreshold = 7;
         this.justTapped = false;
         this.justSwiped = false;
         this.justMoved = false;
-        this.trackId = 0;
-        this.activeTracking = false;
-        this.swipeTreshold = 10;
-        this.swipeTreshold = swipeTreshold;
     }
     onTouchEventDown(e) {
-        e.preventDefault();
         this.onTouchDown(e.changedTouches[0]);
     }
     onTouchDown(e) {
         if (!this.activeTracking) {
-            this.downEvent = e;
+            this.downTouch = e;
             this.trackId = e.identifier;
             this.activeTracking = true;
-            this.trigger('touchDown', { 'touchEvent': e });
         }
     }
     onTouchEventUp(e) {
@@ -33,18 +27,16 @@ export class TouchManager extends NodeEventGenerator {
         }
     }
     onTouchUp(e) {
-        let vDown = new Vector(this.downEvent.pageX, this.downEvent.pageY).multiply(this.engine.pxMult.pow(-1));
-        let vUp = new Vector(e.pageX, e.pageY).multiply(this.engine.pxMult.pow(-1));
-        this.lastTap = vUp.multiply(this.engine.pxMult.pow(-1));
+        let vDown = new Vector(this.downTouch.pageX, this.downTouch.pageY).divide(this.engine.resMult);
+        let vUp = new Vector(e.pageX, e.pageY).divide(this.engine.resMult);
+        this.lastTap = vUp;
         let touchDiff = vUp.subtract(vDown);
         if (touchDiff.length > this.swipeTreshold) {
             this.lastSwipe = touchDiff;
             this.justSwiped = true;
-            this.trigger('swiped', { 'swipe': this.lastSwipe });
         }
         this.justTapped = true;
         this.activeTracking = false;
-        this.trigger('touchUp', { 'touchEvent': e });
     }
     onTouchEventMove(e) {
         e.preventDefault();
@@ -54,9 +46,16 @@ export class TouchManager extends NodeEventGenerator {
             }
         }
     }
+    initListeners(div = document) {
+        div.addEventListener('touchstart', (e) => { this.onTouchDown(e.changedTouches[0]); }, false);
+        div.addEventListener('touchend', (e) => { this.onTouchEventUp(e); }, false);
+        div.addEventListener('touchmove', (e) => { this.onTouchEventMove(e); }, false);
+        div.addEventListener('mousedown', (e) => { this.onTouchDown(this.engine.fakeTouchEvent(e)); }, false);
+        div.addEventListener('mouseup', (e) => { this.onTouchUp(this.engine.fakeTouchEvent(e)); }, false);
+        div.addEventListener('mousemove', (e) => { this.onTouchMove(this.engine.fakeTouchEvent(e)); }, false);
+    }
     onTouchMove(e) {
-        this.lastMove = new Vector(e.pageX, e.pageY).multiply(this.engine.pxMult.pow(-1));
-        this.trigger('touchMove', { 'touchEvent': e });
+        this.lastMove = new Vector(e.pageX, e.pageY).divide(this.engine.resMult);
     }
     update() {
         this.justTapped = false;

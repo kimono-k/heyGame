@@ -24,6 +24,9 @@ body {
 
 .gameComp {
     position: absolute;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .red {
@@ -36,4 +39,32 @@ body {
 
 .gameLetter {
     z-index: -10;
+}
+
+.item-footer {
+    display: flex;
+    justify-content: center;
+}
+
+.item-footer h2 {
+    margin-top: 0;
+    font-size: 70px;
+}
+
+#progressBar {
+    position: absolute;
+    color: var(--white1);
+}
+
+#progressBG {
+    color: var(--white2)
+}
+
+#progress {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#deathMenu {
+    z-index: 100;
 }
