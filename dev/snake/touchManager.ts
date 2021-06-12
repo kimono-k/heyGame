@@ -8,8 +8,12 @@ interface Touch {
     pageY: number;
 };
 
+interface GameEngine {
+    resMult: number;
+}
+
 export class TouchManager {
-    public engine: SnakeEngine;
+    public engine: GameEngine;
     // id of touch that's being followed (-1 if mouse)
     private trackId: number;
     private activeTracking: boolean = false;
@@ -24,6 +28,8 @@ export class TouchManager {
     public lastTap: Vector;
     public lastSwipe: Vector;
     public lastMove: Vector;
+
+    public resMult = 1;
 
     constructor() { }
 
@@ -78,13 +84,23 @@ export class TouchManager {
         }
     }
 
+    // converts a mouseEvent to a Touch
+    public fakeTouchEvent(e: MouseEvent) {
+        return {
+            identifier: -1,
+            target: e.target,
+            pageX: e.pageX,
+            pageY: e.pageY
+        }
+    }
+
     public initListeners(div= document) {
         div.addEventListener('touchstart', (e) => { this.onTouchDown(e.changedTouches[0]) }, false);
         div.addEventListener('touchend', (e) => { this.onTouchEventUp(e) }, false);
         div.addEventListener('touchmove', (e) => { this.onTouchEventMove(e) }, false);
-        div.addEventListener('mousedown', (e) => { this.onTouchDown(this.engine.fakeTouchEvent(e)) }, false);
-        div.addEventListener('mouseup', (e) => { this.onTouchUp(this.engine.fakeTouchEvent(e)) }, false);
-        div.addEventListener('mousemove', (e) => { this.onTouchMove(this.engine.fakeTouchEvent(e)) }, false);
+        div.addEventListener('mousedown', (e) => { this.onTouchDown(this.fakeTouchEvent(e)) }, false);
+        div.addEventListener('mouseup', (e) => { this.onTouchUp(this.fakeTouchEvent(e)) }, false);
+        div.addEventListener('mousemove', (e) => { this.onTouchMove(this.fakeTouchEvent(e)) }, false);
     }
 
     // tracks any form of movement from the tracked touch
