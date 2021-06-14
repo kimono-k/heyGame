@@ -3,6 +3,7 @@ import { Letter } from "./components/letter.js";
 import { Segment } from "./components/segment.js";
 import { BaseLevel } from "./level.js";
 import { Vector } from "./math/vector.js";
+import { SoundManager } from "./soundManager.js";
 import { TouchManager } from "./touchManager.js";
 
 export class SnakeEngine {
@@ -28,10 +29,12 @@ export class SnakeEngine {
     public touch: TouchManager;
     public currentWord: string = 'Dani';
     public algo: BaseLevel;
+    public audio: SoundManager;
 
     constructor(gameDiv: HTMLElement, inputType = 'swipe') {
         this.gameDiv = gameDiv;
         this.initInput();
+        this.audio = new SoundManager();
         this.inputType = inputType;
 
         document.getElementById('restartButton').addEventListener('click', () => {this.start()})
@@ -68,6 +71,19 @@ export class SnakeEngine {
         this.touch.update();
 
         if (!this.paused) window.requestAnimationFrame((ms) => this.update(ms));
+    }
+
+    public playWord(word: string) {
+        this.pause();
+        setTimeout(() => this.vocalizeWord(word), 1000);
+    }
+
+    public vocalizeWord(word: string) {
+        this.audio.playAudio(word);
+        setTimeout(() => {
+            this.unPause();
+            this.update(0);
+        }, 1000);
     }
 
     // renders root node + children

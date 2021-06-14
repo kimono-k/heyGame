@@ -24,6 +24,7 @@ export class LearnLetters {
         this.engine.progressText = '';
     }
     onEat() {
+        this.engine.audio.playAudio(this.letter);
         this.engine.progressText += this.letter;
         this.currentProgress++;
         if (this.currentProgress == 3) {
@@ -47,7 +48,7 @@ export class LearnLetters {
 }
 export class LearnWords {
     constructor() {
-        this.words = ['boom', 'boor', 'boos', 'luchtvaartmaatschappij', 'roos'];
+        this.words = ['roos', 'boon', 'boos', 'luchtvaartmaatschappij', 'roos'];
         this.currentWord = 0;
         this.wordProgress = 0;
     }
@@ -63,11 +64,14 @@ export class LearnWords {
         this.spawnWord();
     }
     onEat(letter) {
+        this.engine.audio.playAudio(letter);
         if (letter == this.word[this.wordProgress]) {
             this.wordProgress++;
             this.engine.progressText = this.word.substring(0, this.wordProgress);
             if (this.engine.progressText == this.word) {
+                this.engine.playWord(this.word);
                 this.currentWord++;
+                this.engine.grow();
                 this.spawnWord();
             }
         }

@@ -1,6 +1,7 @@
 import { Letter } from "./components/letter.js";
 import { Segment } from "./components/segment.js";
 import { Vector } from "./math/vector.js";
+import { SoundManager } from "./soundManager.js";
 import { TouchManager } from "./touchManager.js";
 export class SnakeEngine {
     constructor(gameDiv, inputType = 'swipe') {
@@ -24,6 +25,7 @@ export class SnakeEngine {
         this.currentWord = 'Dani';
         this.gameDiv = gameDiv;
         this.initInput();
+        this.audio = new SoundManager();
         this.inputType = inputType;
         document.getElementById('restartButton').addEventListener('click', () => { this.start(); });
         let screen = gameDiv.getBoundingClientRect();
@@ -51,6 +53,17 @@ export class SnakeEngine {
         this.touch.update();
         if (!this.paused)
             window.requestAnimationFrame((ms) => this.update(ms));
+    }
+    playWord(word) {
+        this.pause();
+        setTimeout(() => this.vocalizeWord(word), 1000);
+    }
+    vocalizeWord(word) {
+        this.audio.playAudio(word);
+        setTimeout(() => {
+            this.unPause();
+            this.update(0);
+        }, 1000);
     }
     render() {
         for (let c of this.letters) {
