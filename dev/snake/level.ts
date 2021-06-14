@@ -37,6 +37,7 @@ export class LearnLetters implements BaseLevel {
     }
 
     public onEat() {
+        this.engine.audio.playAudio(this.letter);
         this.engine.progressText += this.letter;
         this.currentProgress++;
         if (this.currentProgress == 3) {
@@ -63,7 +64,7 @@ export class LearnLetters implements BaseLevel {
 
 export class LearnWords implements BaseLevel {
     public engine: SnakeEngine;
-    private words = ['boom','boor','boos','luchtvaartmaatschappij','roos'];
+    private words = ['roos','boon','boos','luchtvaartmaatschappij','roos'];
     private currentWord = 0;
     private wordProgress = 0;
 
@@ -80,12 +81,15 @@ export class LearnWords implements BaseLevel {
         this.spawnWord();
     }
 
-    public onEat(letter: String) {
+    public onEat(letter: string) {
+        this.engine.audio.playAudio(letter);
         if (letter == this.word[this.wordProgress]) {
             this.wordProgress++;
             this.engine.progressText = this.word.substring(0, this.wordProgress);
             if (this.engine.progressText == this.word) {
+                this.engine.playWord(this.word);
                 this.currentWord++;
+                this.engine.grow();
                 this.spawnWord();
             }
         } else {
