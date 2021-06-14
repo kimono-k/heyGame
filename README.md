@@ -19,36 +19,62 @@ v0
 
 v0.1
 
-- snake's direction can be changed by swiping
-+ snake moves
+- snake beweegt
+- snake's richting kan worden verandert door te swipen
 
 V0.2
 
-- snake is able to eat apples/letters
-- snake can grow
+- snake kan appels/letters eten
+- snake kan groeien
 
 V0.3
 
-- letters disappear after being eaten
-- new letters get generated after one is eaten
+- letters verdwijnen na te worden gegeten
+- nieuwe letter wordt gegenereerd nadat er één is gegeten
 
 V0.4
 
-- dynamically sized game based on resolution
+- game heeft dynamische grootte op basis van scherm
 
 V0.5
 
-- made the classes more strict (explicit public/private/protected)
-- the game does not work anymore
+- classes stricter gemaakt (expliciete public/private/protected)
+- ~~de game werkt niet meer~~
+
+V0.6
+
+- snake
+    - NodeEventGenerator verwijdert
+    - node classes verwijdert
+    - InputManager class verwijdert
+    - unnecessary Vector class functions verwijdert
+    - Game class met SnakeEngine class samengevoegd
+    - GameComponent class toegevoegd
+
+V0.7
+
+- Quality of life
+    - Beetje speling met bewegen slang, kan draaien vlak nadat het een vakje is gepasseerd
+    - Alternatieve input-manier toegevoegd: Tikken!
+- interface en interactie hiertussen toegevoegd om levels te maken
+    - simpel level gemaakt
+- snake changelog vertaald want beetje dom als half NL half EN is
+
+V0.8
+
+- snake kan sterven
+    - je gaat dood als je jezelf raakt
+    - je gaat dood als je de rand raakt
+    - scherm voor wanneer je dood bent om te restarten
+
+V0.9
+
+- tekst toegevoegd onderaan scherm
+    - de tekst kan als soort progressiebalk worden gebruikt, twee divs over elkaar met andere kleur
+- mogelijke levels gemaakt
 
 ## to do
 
-- functionaliteit om te sterven
-- snake dood wanneer tegen de rand
-- snake dood wanneer tegen snake
-- woord onderin scherm laten verschijnen
-- letters van woord tegelijk genereren
-- nieuw woord wanneer woord is gepakt
 - cool effect ofzo wanneer woord is gepakt
 - sprites
 - geanimeerde sprites

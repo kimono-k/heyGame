@@ -1,11 +1,12 @@
 export class GameObject {
-b
+
     protected element : HTMLElement
     protected posX : number
     protected posY : number
     protected speedX : number
     protected speedY : number
     protected scale : number = 1
+
 
     update(){
         this.posX += this.speedX

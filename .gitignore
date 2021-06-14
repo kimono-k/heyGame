@@ -3,3 +3,5 @@ node_modules
 .vscode
 symbols.json
 .idea
+dev/oldsnake
+docs/js/oldsnake
