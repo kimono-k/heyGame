@@ -1,22 +1,20 @@
+import { Game } from "./game.js";
 import { GameObject } from "./gameObject.js";
 
 export class Paddle extends GameObject{
-
-    // private posX : number = window.innerWidth / 2
-    // private posY : number = window.innerHeight - 10
-    // private inputLeft : number = 65
-    // private inputRight : number = 68
     
-
+    private gameInstance : Game
     // Properties
 
     // Constructor
-    constructor(){
+    constructor(gameInstance : Game){
         super()
         super.spawn("paddle")
-        super.speedX = 0;
-        super.posX = 300
-        super.posY = 500
+        this.speedX = 0
+        this.posX = 300
+        this.posY = 500
+        this.scale = 1
+        this.gameInstance = gameInstance
 
         window.addEventListener("keyup", (e:KeyboardEvent) => this.onKeyUp(e))
         window.addEventListener("keydown", (e:KeyboardEvent) => this.onKeyDown(e))
@@ -27,6 +25,7 @@ export class Paddle extends GameObject{
     // gameloop
     public update() : void {
         super.update()
+        this.checkBorderCollision()
     }
 
     // general functions 
@@ -57,5 +56,12 @@ export class Paddle extends GameObject{
 
     // collision
 
+    public checkBorderCollision(){
+        console.log(this.posX)
 
+        if(this.posX <= 0 || this.posX >= 550  ){
+            console.log("You touched the border")
+            this.speedX = 0;
+        }
+    }
 }

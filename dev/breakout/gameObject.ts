@@ -4,7 +4,7 @@ b
     protected posX : number
     protected posY : number
     protected speedX : number
-    protected scale : number = 0.3
+    protected scale : number
 
     update(){
         //update the X position so it can move

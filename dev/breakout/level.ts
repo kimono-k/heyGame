@@ -45,7 +45,7 @@ export class Level {
 
     // general functions 
     private init(level : number) { 
-        this.paddle = new Paddle;
+        this.paddle = new Paddle(this.gameInstance);
         this.ball = new Ball(this.gameInstance);
         // todo: switchcase levelinit 1 2 3 
     }
