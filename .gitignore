@@ -5,3 +5,4 @@ symbols.json
 .idea
 dev/oldsnake
 docs/js/oldsnake
+.env
