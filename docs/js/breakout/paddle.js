@@ -1,16 +1,21 @@
 import { GameObject } from "./gameObject.js";
 export class Paddle extends GameObject {
-    constructor() {
+    constructor(gameInstance) {
         super();
+        this.gameInstance = gameInstance;
         super.spawn("paddle");
-        super.speedX = 0;
-        super.posX = 300;
-        super.posY = 500;
+        this.speedX = 0;
+        this.speedY = 0;
+        this.posX = 300;
+        this.posY = 500;
+        this.scale = 1;
         window.addEventListener("keyup", (e) => this.onKeyUp(e));
         window.addEventListener("keydown", (e) => this.onKeyDown(e));
     }
     update() {
-        super.update();
+        if (!this.checkBorderCollision()) {
+            super.update();
+        }
     }
     onKeyDown(e) {
         switch (e.key) {
@@ -32,6 +37,16 @@ export class Paddle extends GameObject {
             case "ArrowRight":
                 this.speedX = 0;
                 break;
+        }
+    }
+    checkBorderCollision() {
+        let rightBorder = this.gameInstance.levelWidth - this.element.clientWidth * this.scale;
+        if (this.posX < 0 - this.element.clientWidth * this.scale * 1.2 || this.posX > rightBorder) {
+            this.posX = 300;
+            return true;
+        }
+        else {
+            return false;
         }
     }
 }
