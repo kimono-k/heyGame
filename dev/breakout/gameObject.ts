@@ -1,14 +1,16 @@
 export class GameObject {
-b
+
     protected element : HTMLElement
     protected posX : number
     protected posY : number
     protected speedX : number
-    protected scale : number
+    protected speedY : number
+    protected scale : number = 1
+
 
     update(){
-        //update the X position so it can move
         this.posX += this.speedX
+        this.posY += this.speedY
 
         this.element.style.transform = `matrix(${this.scale}, 0 , 0, ${this.scale}, ${this.posX}, ${this.posY})`
     }
@@ -19,12 +21,12 @@ b
         level.appendChild(this.element); 
     }
 
-    protected getRectancle() : ClientRect {
+    public getRectancle() : ClientRect {
         //TODO get the rectangle for the collision
         return this.element.getBoundingClientRect()
     }
 
-    protected getFutureRectangle() : ClientRect {
+    public getFutureRectangle() : ClientRect {
         // TODO: getFutureRectangle
         return this.element.getBoundingClientRect()
     }

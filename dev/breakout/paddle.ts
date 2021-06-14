@@ -9,13 +9,14 @@ export class Paddle extends GameObject{
     // Constructor
     constructor(gameInstance : Game){
         super()
+        this.gameInstance = gameInstance
         super.spawn("paddle")
         this.speedX = 0
+        this.speedY = 0;
         this.posX = 300
         this.posY = 500
         this.scale = 1
-        this.gameInstance = gameInstance
-
+      
         window.addEventListener("keyup", (e:KeyboardEvent) => this.onKeyUp(e))
         window.addEventListener("keydown", (e:KeyboardEvent) => this.onKeyDown(e))
     }
