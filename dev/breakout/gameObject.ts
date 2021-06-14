@@ -4,11 +4,12 @@ b
     protected posX : number
     protected posY : number
     protected speedX : number
+    protected speedY : number
     protected scale : number = 1
 
     update(){
-        //update the X position so it can move
         this.posX += this.speedX
+        this.posY += this.speedY
 
         this.element.style.transform = `matrix(${this.scale}, 0 , 0, ${this.scale}, ${this.posX}, ${this.posY})`
     }

@@ -15,6 +15,7 @@ export class Paddle extends GameObject{
         super()
         super.spawn("paddle")
         super.speedX = 0;
+        super.speedY = 0;
         super.posX = 300
         super.posY = 500
 

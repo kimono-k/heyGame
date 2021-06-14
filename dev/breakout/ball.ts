@@ -5,7 +5,6 @@ export class Ball extends GameObject{
     // Parameters
     // Fields    
     private gameInstance : Game
-    private speedY : number = -1
     private sticky : boolean = false
     private inputUse : number  
     public levelWidth : number
@@ -20,6 +19,7 @@ export class Ball extends GameObject{
         super.spawn("ball")
         super.posX = 500
         super.posY = 100
+        super.speedY = 1
         super.speedX = 1
         super.scale = 0.3
     }
@@ -29,7 +29,7 @@ export class Ball extends GameObject{
     // gameloop
     public update() : void {
         super.update()
-        this.posY += this.speedY
+
         
         this.checkBorderCollision()
     }

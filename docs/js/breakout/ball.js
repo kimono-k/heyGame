@@ -2,18 +2,17 @@ import { GameObject } from "./gameObject.js";
 export class Ball extends GameObject {
     constructor(gameInstance) {
         super();
-        this.speedY = -1;
         this.sticky = false;
         this.gameInstance = gameInstance;
         super.spawn("ball");
         super.posX = 500;
         super.posY = 100;
+        super.speedY = 1;
         super.speedX = 1;
         super.scale = 0.3;
     }
     update() {
         super.update();
-        this.posY += this.speedY;
         this.checkBorderCollision();
     }
     checkBorderCollision() {
