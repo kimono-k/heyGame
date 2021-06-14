@@ -25,8 +25,9 @@ export class Paddle extends GameObject{
 
     // gameloop
     public update() : void {
-        super.update()
-        this.checkBorderCollision()
+        if (!this.checkBorderCollision()) {
+            super.update()
+        }
     }
 
     // general functions 
@@ -57,12 +58,14 @@ export class Paddle extends GameObject{
 
     // collision
 
-    public checkBorderCollision(){
-        console.log(this.posX)
+    public checkBorderCollision() : boolean {
+        let rightBorder = this.gameInstance.levelWidth - this.element.clientWidth * this.scale
 
-        if(this.posX <= 0 || this.posX >= 550  ){
-            console.log("You touched the border")
-            this.speedX = 0;
+        if(this.posX < 0 - this.element.clientWidth * this.scale * 1.2 || this.posX > rightBorder){
+            this.posX = 300
+            return true
+        } else {
+            return false
         }
     }
 }

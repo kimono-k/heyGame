@@ -30,6 +30,7 @@ export class SnakeEngine {
         let mult = Math.min(screen.width / 120, screen.height / 80);
         this.resMult = mult;
         this.touch.initListeners();
+        this.touch.resMult = this.resMult;
         console.log('game constructed!');
     }
     pause() {
@@ -58,14 +59,6 @@ export class SnakeEngine {
         for (let c of this.snakeDivs) {
             c.update();
         }
-    }
-    fakeTouchEvent(e) {
-        return {
-            identifier: -1,
-            target: e.target,
-            pageX: e.pageX,
-            pageY: e.pageY
-        };
     }
     movePos(touchPos) {
         let divRect = this.gameDiv.getBoundingClientRect();
@@ -222,7 +215,7 @@ export class SnakeEngine {
     }
     initInput() {
         let touch = new TouchManager;
-        touch.engine = this;
+        touch.resMult = this.resMult;
         this.touch = touch;
     }
     clearDivs() {
