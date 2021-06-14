@@ -9,6 +9,7 @@ export class Ball extends GameObject {
         super.posY = 100;
         super.speedY = 1;
         super.speedX = 1;
+        super.scale = 0.3;
     }
     update() {
         super.update();

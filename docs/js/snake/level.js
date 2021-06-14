@@ -64,6 +64,7 @@ export class LearnWords {
         this.spawnWord();
     }
     onEat(letter) {
+        this.engine.audio.playAudio(letter);
         if (letter == this.word[this.wordProgress]) {
             this.wordProgress++;
             this.engine.progressText = this.word.substring(0, this.wordProgress);
