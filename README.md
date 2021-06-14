@@ -82,6 +82,8 @@ V0.9
 ### Breakout
 
 v0.1
+- added ball
+- added paddle
 - added breakout uml
 
 v0 

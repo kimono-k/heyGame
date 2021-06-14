@@ -9,13 +9,14 @@ export class Paddle extends GameObject{
     // Constructor
     constructor(gameInstance : Game){
         super()
+        this.gameInstance = gameInstance
         super.spawn("paddle")
         this.speedX = 0
+        this.speedY = 0;
         this.posX = 300
         this.posY = 500
         this.scale = 1
-        this.gameInstance = gameInstance
-
+      
         window.addEventListener("keyup", (e:KeyboardEvent) => this.onKeyUp(e))
         window.addEventListener("keydown", (e:KeyboardEvent) => this.onKeyDown(e))
     }
@@ -24,8 +25,9 @@ export class Paddle extends GameObject{
 
     // gameloop
     public update() : void {
-        super.update()
-        this.checkBorderCollision()
+        if (!this.checkBorderCollision()) {
+            super.update()
+        }
     }
 
     // general functions 
@@ -56,12 +58,14 @@ export class Paddle extends GameObject{
 
     // collision
 
-    public checkBorderCollision(){
-        console.log(this.posX)
+    public checkBorderCollision() : boolean {
+        let rightBorder = this.gameInstance.levelWidth - this.element.clientWidth * this.scale
 
-        if(this.posX <= 0 || this.posX >= 550  ){
-            console.log("You touched the border")
-            this.speedX = 0;
+        if(this.posX < 0 || this.posX > rightBorder){
+            this.posX = 300
+            return true
+        } else {
+            return false
         }
     }
 }
