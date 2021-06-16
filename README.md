@@ -18,31 +18,25 @@ v0
 ### Snake
 
 v0.1
-
 - snake beweegt
 - snake's richting kan worden verandert door te swipen
 
 V0.2
-
 - snake kan appels/letters eten
 - snake kan groeien
 
 V0.3
-
 - letters verdwijnen na te worden gegeten
 - nieuwe letter wordt gegenereerd nadat er één is gegeten
 
 V0.4
-
 - game heeft dynamische grootte op basis van scherm
 
 V0.5
-
 - classes stricter gemaakt (expliciete public/private/protected)
 - ~~de game werkt niet meer~~
 
 V0.6
-
 - snake
     - NodeEventGenerator verwijdert
     - node classes verwijdert
@@ -52,7 +46,6 @@ V0.6
     - GameComponent class toegevoegd
 
 V0.7
-
 - Quality of life
     - Beetje speling met bewegen slang, kan draaien vlak nadat het een vakje is gepasseerd
     - Alternatieve input-manier toegevoegd: Tikken!
@@ -61,20 +54,17 @@ V0.7
 - snake changelog vertaald want beetje dom als half NL half EN is
 
 V0.8
-
 - snake kan sterven
     - je gaat dood als je jezelf raakt
     - je gaat dood als je de rand raakt
     - scherm voor wanneer je dood bent om te restarten
 
 V0.9
-
 - tekst toegevoegd onderaan scherm
     - de tekst kan als soort progressiebalk worden gebruikt, twee divs over elkaar met andere kleur
 - mogelijke levels gemaakt
 
 V0.10
-
 - letters worden uitgesproken als je ze pakt
 - woorden worden uitgesproken als je ze pakt
 - pauze vlak voor en na woord uitspreken
