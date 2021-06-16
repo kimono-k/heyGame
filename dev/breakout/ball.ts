@@ -41,7 +41,7 @@ export class Ball extends GameObject{
         let rightBorder = this.gameInstance.levelWidth - this.element.clientWidth * this.scale * 2.2
         let bottemBorder = this.gameInstance.levelHeight - this.element.clientHeight * this.scale * 2.2
     
-        console.log(this.element.clientWidth * this.scale)
+        // console.log(this.element.clientWidth * this.scale)
         
         if(this.posY > bottemBorder || this.posY < 0 - this.element.clientWidth * this.scale * 1.2) {
             this.bounceY()
