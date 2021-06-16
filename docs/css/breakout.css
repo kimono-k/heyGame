@@ -26,3 +26,34 @@ ball {
     cursor: pointer;
 }
 
+brickgrid {
+    margin: 30px;
+
+    display: grid;
+
+    grid-template-columns: repeat(5, 12vw);
+    grid-template-rows: repeat(5, 4vw);
+    column-gap: 20px;
+    row-gap: 20px;
+
+}
+
+brick {
+    font-size: 3.5vw;
+    text-align: center;
+
+    color:azure;
+
+    font-weight: 900;
+    padding: auto;
+    
+    height: 4vw;
+    width: 12vw;
+
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    background-color: purple;
+
+    background-image: url('../assets/img/breakout/brickPurple.png');
+}
