@@ -173,9 +173,17 @@ export class SnakeEngine {
     }
     collideSnake() {
         let snakeHead = this.snakeTarget[this.snakeTarget.length - 1];
-        if (snakeHead.y < 0 || snakeHead.y >= this.h + 1 ||
-            snakeHead.x < 0 || snakeHead.x >= this.w) {
-            this.toDie = true;
+        if (snakeHead.y < -1) {
+            this.snakeTarget[this.snakeTarget.length - 1].y = this.h + 2;
+        }
+        else if (snakeHead.x < -1) {
+            this.snakeTarget[this.snakeTarget.length - 1].x = this.w + 1;
+        }
+        else if (snakeHead.y > this.h + 2) {
+            this.snakeTarget[this.snakeTarget.length - 1].y = -1;
+        }
+        else if (snakeHead.x > this.w + 1) {
+            this.snakeTarget[this.snakeTarget.length - 1].w = -1;
         }
         for (let i = 0; i < this.snakeTarget.length - 1; i++) {
             let segment = this.snakeTarget[i];
