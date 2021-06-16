@@ -45,6 +45,8 @@ export class SnakeEngine {
             screen.height / 80);
         this.resMult = mult;
 
+        this.initBackground();
+
         this.touch.initListeners();
         this.touch.resMult = this.resMult;
 
@@ -94,6 +96,15 @@ export class SnakeEngine {
         for (let c of this.snakeDivs) {
             c.update();
         }
+    }
+
+    private initBackground() {
+        let bg = new GameComponent('background');
+        let bgSize = this.size.multiply(this.segmentSize * this.resMult);
+        bg.size = bgSize;
+        bg.engine = this;
+        bg.updateDiv();
+        this.gameDiv.appendChild(bg.div);
     }
 
     movePos(touchPos: Vector) {
