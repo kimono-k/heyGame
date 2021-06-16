@@ -1,7 +1,10 @@
 import { GameObject } from "./gameObject.js";
+import { TouchManager } from "../snake/touchManager.js";
+import { Vector } from "../snake/math/vector.js";
 export class Paddle extends GameObject {
     constructor(gameInstance) {
         super();
+        this.speed = 8;
         this.gameInstance = gameInstance;
         super.spawn("paddle");
         this.speedX = 0;
@@ -9,12 +12,25 @@ export class Paddle extends GameObject {
         this.posX = 300;
         this.posY = 500;
         this.scale = 1;
+        let touch = new TouchManager();
+        touch.initListeners();
+        this.touch = touch;
         window.addEventListener("keyup", (e) => this.onKeyUp(e));
         window.addEventListener("keydown", (e) => this.onKeyDown(e));
     }
     update() {
         if (!this.checkBorderCollision()) {
             super.update();
+        }
+        if (this.touch.touchDown) {
+            let pos = this.touch.lastMove;
+            let gameRect = document.querySelector('level').getBoundingClientRect();
+            pos = pos.subtract(new Vector(gameRect.x + 76.5, gameRect.y));
+            let diff = pos.x - this.posX;
+            this.speedX = Math.sign(diff) * Math.min(this.speed, Math.abs(diff));
+        }
+        else {
+            this.speedX = 0;
         }
     }
     onKeyDown(e) {

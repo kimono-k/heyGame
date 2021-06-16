@@ -71,5 +71,8 @@ export class TouchManager {
         this.justSwiped = false;
         this.justMoved = false;
     }
+    get touchDown() {
+        return this.activeTracking;
+    }
 }
 //# sourceMappingURL=touchManager.js.map

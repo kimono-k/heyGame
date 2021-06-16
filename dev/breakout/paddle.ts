@@ -1,10 +1,12 @@
 import { Game } from "./game.js";
 import { GameObject } from "./gameObject.js";
-import { SoundManager } from "../snake/soundManager.js";
+import { TouchManager } from "../snake/touchManager.js";
+import { Vector } from "../snake/math/vector.js";
 
 export class Paddle extends GameObject {
-    private sound: SoundManager;
-    private gameInstance: Game
+    private touch: TouchManager;
+    private gameInstance: Game;
+    private speed = 8; // dit is de snelheid van de paddle
     // Properties
 
     // Constructor
@@ -18,6 +20,10 @@ export class Paddle extends GameObject {
         this.posY = 500
         this.scale = 1
 
+        let touch = new TouchManager();
+        touch.initListeners();
+        this.touch = touch;
+
         window.addEventListener("keyup", (e: KeyboardEvent) => this.onKeyUp(e))
         window.addEventListener("keydown", (e: KeyboardEvent) => this.onKeyDown(e))
     }
@@ -28,6 +34,15 @@ export class Paddle extends GameObject {
     public update(): void {
         if (!this.checkBorderCollision()) {
             super.update()
+        }
+        if (this.touch.touchDown) {
+            let pos = this.touch.lastMove;
+            let gameRect = document.querySelector('level').getBoundingClientRect();
+            pos = pos.subtract(new Vector(gameRect.x + 76.5, gameRect.y));
+            let diff = pos.x - this.posX;
+            this.speedX = Math.sign(diff) * Math.min(this.speed, Math.abs(diff));
+        } else {
+            this.speedX = 0;
         }
     }
 
@@ -62,13 +77,8 @@ export class Paddle extends GameObject {
     public checkBorderCollision(): boolean {
         let rightBorder = this.gameInstance.levelWidth - this.element.clientWidth * this.scale
 
-<<<<<<< HEAD
-        if (this.posX < 0 || this.posX > rightBorder) {
-            this.posX = 300
-=======
         if (this.posX > rightBorder) {
             this.posX = rightBorder
->>>>>>> e4fcf1858e1d68d1b49e7363f0f9244adbb2eea3
             return true
           }
         
