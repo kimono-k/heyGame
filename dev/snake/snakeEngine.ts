@@ -37,7 +37,7 @@ export class SnakeEngine {
         this.audio = new SoundManager();
         this.inputType = inputType;
 
-        document.getElementById('restartButton').addEventListener('click', () => {this.start()})
+        document.getElementById('restartButton').addEventListener('click', () => { this.start() })
 
         let screen = gameDiv.getBoundingClientRect();
 
@@ -62,7 +62,7 @@ export class SnakeEngine {
         this.paused = false;
         this.gameDiv.style.opacity = '1';
     }
- 
+
     public update(ms: number) {
         this.delta = (ms - this.deltaTimestamp) / 1000 * 60;
         this.deltaTimestamp = ms;
