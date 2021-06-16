@@ -1,3 +1,4 @@
+import { GameComponent } from "./components/gameComponent.js";
 import { Letter } from "./components/letter.js";
 import { Segment } from "./components/segment.js";
 import { Vector } from "./math/vector.js";
@@ -31,6 +32,7 @@ export class SnakeEngine {
         let screen = gameDiv.getBoundingClientRect();
         let mult = Math.min(screen.width / 120, screen.height / 80);
         this.resMult = mult;
+        this.initBackground();
         this.touch.initListeners();
         this.touch.resMult = this.resMult;
         console.log('game constructed!');
@@ -72,6 +74,14 @@ export class SnakeEngine {
         for (let c of this.snakeDivs) {
             c.update();
         }
+    }
+    initBackground() {
+        let bg = new GameComponent('background');
+        let bgSize = this.size.multiply(this.segmentSize * this.resMult);
+        bg.size = bgSize;
+        bg.engine = this;
+        bg.updateDiv();
+        this.gameDiv.appendChild(bg.div);
     }
     movePos(touchPos) {
         let divRect = this.gameDiv.getBoundingClientRect();
