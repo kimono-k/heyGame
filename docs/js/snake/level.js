@@ -24,7 +24,7 @@ export class LearnLetters {
         this.engine.progressText = '';
     }
     onEat() {
-        this.engine.audio.playAudio(this.letter.toLowerCase());
+        this.engine.audio.playAudio(this.letter);
         this.engine.progressText += this.letter;
         this.currentProgress++;
         if (this.currentProgress == 3) {

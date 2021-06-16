@@ -73,6 +73,12 @@ V0.9
     - de tekst kan als soort progressiebalk worden gebruikt, twee divs over elkaar met andere kleur
 - mogelijke levels gemaakt
 
+V0.10
+
+- letters worden uitgesproken als je ze pakt
+- woorden worden uitgesproken als je ze pakt
+- pauze vlak voor en na woord uitspreken
+
 ## to do
 
 - cool effect ofzo wanneer woord is gepakt
