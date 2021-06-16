@@ -19,7 +19,7 @@ export class SnakeEngine {
     private paused = false;
     public toGrow = false;
     public toDie = false;
-    public size: Vector = new Vector(12, 8);
+    public size: Vector = new Vector(18, 12);
     public segmentSize = 10;
     public letters: Letter[] = [];
     public letterPos: Vector[] = [];
@@ -41,8 +41,8 @@ export class SnakeEngine {
 
         let screen = gameDiv.getBoundingClientRect();
 
-        let mult = Math.min(screen.width / 120,
-            screen.height / 80);
+        let mult = Math.min(screen.width / 180,
+            screen.height / 120);
         this.resMult = mult;
 
         this.initBackground();
@@ -174,7 +174,7 @@ export class SnakeEngine {
     createSnakeSegment(pos: Vector, unshift = false) {
         let snake = new Segment();
         snake.engine = this;
-        snake.size = new Vector(this.segmentSize - 2, this.segmentSize - 2);
+        snake.size = new Vector(this.segmentSize - 1, this.segmentSize - 1);
 
         if (unshift) {
             this.snakeDivs.unshift(snake);

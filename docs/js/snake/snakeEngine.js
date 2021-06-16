@@ -17,7 +17,7 @@ export class SnakeEngine {
         this.paused = false;
         this.toGrow = false;
         this.toDie = false;
-        this.size = new Vector(12, 8);
+        this.size = new Vector(18, 12);
         this.segmentSize = 10;
         this.letters = [];
         this.letterPos = [];
@@ -30,7 +30,7 @@ export class SnakeEngine {
         this.inputType = inputType;
         document.getElementById('restartButton').addEventListener('click', () => { this.start(); });
         let screen = gameDiv.getBoundingClientRect();
-        let mult = Math.min(screen.width / 120, screen.height / 80);
+        let mult = Math.min(screen.width / 180, screen.height / 120);
         this.resMult = mult;
         this.initBackground();
         this.touch.initListeners();
@@ -137,7 +137,7 @@ export class SnakeEngine {
     createSnakeSegment(pos, unshift = false) {
         let snake = new Segment();
         snake.engine = this;
-        snake.size = new Vector(this.segmentSize - 2, this.segmentSize - 2);
+        snake.size = new Vector(this.segmentSize - 1, this.segmentSize - 1);
         if (unshift) {
             this.snakeDivs.unshift(snake);
             this.snakePos.unshift(pos);
