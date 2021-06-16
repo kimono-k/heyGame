@@ -37,7 +37,7 @@ export class LearnLetters implements BaseLevel {
     }
 
     public onEat() {
-        this.engine.audio.playAudio(this.letter);
+        this.engine.audio.playAudio(this.letter.toLowerCase());
         this.engine.progressText += this.letter;
         this.currentProgress++;
         if (this.currentProgress == 3) {
