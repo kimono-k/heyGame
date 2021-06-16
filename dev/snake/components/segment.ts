@@ -1,4 +1,4 @@
-import { Vector } from "../../oldsnake/includes/vector.js";
+import { Vector } from "../math/vector.js";
 import { GameComponent } from "./gameComponent.js";
 
 export class Segment extends GameComponent {
