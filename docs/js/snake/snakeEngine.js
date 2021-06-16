@@ -137,7 +137,7 @@ export class SnakeEngine {
     createSnakeSegment(pos, unshift = false) {
         let snake = new Segment();
         snake.engine = this;
-        snake.size = new Vector(this.segmentSize - 2, this.segmentSize - 2);
+        snake.size = new Vector(this.segmentSize - 3, this.segmentSize - 3);
         if (unshift) {
             this.snakeDivs.unshift(snake);
             this.snakePos.unshift(pos);
