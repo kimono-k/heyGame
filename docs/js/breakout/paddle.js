@@ -41,8 +41,12 @@ export class Paddle extends GameObject {
     }
     checkBorderCollision() {
         let rightBorder = this.gameInstance.levelWidth - this.element.clientWidth * this.scale;
-        if (this.posX < 0 || this.posX > rightBorder) {
-            this.posX = 300;
+        if (this.posX > rightBorder) {
+            this.posX = rightBorder;
+            return true;
+        }
+        if (this.posX < 0) {
+            this.posX = 0;
             return true;
         }
         else {
