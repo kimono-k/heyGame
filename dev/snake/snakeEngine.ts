@@ -224,7 +224,7 @@ export class SnakeEngine {
         } else if (snakeHead.y > this.h + 2) {
             this.snakeTarget[this.snakeTarget.length - 1].y = -1;
         } else if (snakeHead.x > this.w + 1) {
-            this.snakeTarget[this.snakeTarget.length - 1].w = -1;
+            this.snakeTarget[this.snakeTarget.length - 1].x = -1;
         }
         for (let i = 0; i < this.snakeTarget.length - 1; i++) {
             let segment = this.snakeTarget[i];
