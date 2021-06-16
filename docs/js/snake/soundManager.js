@@ -4,7 +4,7 @@ export class SoundManager {
         this.audioPlayer = new Audio();
     }
     playAudio(src) {
-        this.audioPlayer.src = `../assets/audio/general/${src}.wav`;
+        this.audioPlayer.src = `../assets/audio/general/${src.toLowerCase()}.wav`;
         this.audioPlayer.play();
     }
 }
