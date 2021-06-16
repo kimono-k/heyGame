@@ -218,10 +218,10 @@ export class SnakeEngine {
     collideSnake() {
         let snakeHead = this.snakeTarget[this.snakeTarget.length - 1];
         if (snakeHead.y < -1) {
-            this.snakeTarget[this.snakeTarget.length - 1].y = this.h + 2;
+            this.snakeTarget[this.snakeTarget.length - 1].y = this.h + 1;
         } else if (snakeHead.x < -1) {
             this.snakeTarget[this.snakeTarget.length - 1].x = this.w + 1;
-        } else if (snakeHead.y > this.h + 2) {
+        } else if (snakeHead.y > this.h + 1) {
             this.snakeTarget[this.snakeTarget.length - 1].y = -1;
         } else if (snakeHead.x > this.w + 1) {
             this.snakeTarget[this.snakeTarget.length - 1].x = -1;
