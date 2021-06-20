@@ -1,0 +1,25 @@
+{% extends 'scorelist/base.html' %}
+{% block content %}
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Voornaam</th>
+            <th>Achternaam</th>
+            <th>Geboortedatum</th>
+            <th>Score</th>
+            <th>Klasnummer</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for score in ordered_score %}
+        <tr>
+            <td>{{ score.first_name }}</td>
+            <td>{{ score.last_name }}</td>
+            <td>{{ score.birth_date }}</td>
+            <td>{{ score.score }}</td>
+            <td>{{ score.class_code }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
