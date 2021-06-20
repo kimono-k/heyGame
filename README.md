@@ -273,12 +273,12 @@ https://github.com/LuukFTF/knowledgebase/blob/master/articles/development/git.md
 
 ```
 
-## Back-end systeem
+## Back-end systeem by Kimono
 <strike>- db migrations</strike>
-- templating
-- for loop through data
-- nice overview of data
-- create api for @UpperC
+<strike>- templating</strike>
+<strike>- for loop through data</strike>
+<strike>- nice overview of data</strike>
+- create api endpoint for @UpperC
 
 ## Snake
 
