@@ -273,6 +273,13 @@ https://github.com/LuukFTF/knowledgebase/blob/master/articles/development/git.md
 
 ```
 
+## Back-end systeem
+<strike>- db migrations</strike>
+- templating
+- for loop through data
+- nice overview of data
+- create api for @UpperC
+
 ## Snake
 
 ### UML
