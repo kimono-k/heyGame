@@ -275,6 +275,8 @@ https://github.com/LuukFTF/knowledgebase/blob/master/articles/development/git.md
 
 ## Back-end systeem by Kimono
 TODO
+<strike>Python Mastery Course</strike>
+<br> 
 <strike>- db migrations</strike>
 <br>
 <strike>- templating</strike>
