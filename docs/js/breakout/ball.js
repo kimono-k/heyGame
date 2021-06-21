@@ -6,7 +6,7 @@ export class Ball extends GameObject {
         this.gameInstance = gameInstance;
         super.spawn("ball");
         super.posX = 500;
-        super.posY = 100;
+        super.posY = 600;
         super.speedY = 1;
         super.speedX = 1;
         super.scale = 0.3;
@@ -27,8 +27,6 @@ export class Ball extends GameObject {
     }
     paddleCollisionHandler() {
         this.bounceY();
-    }
-    checkBrickCollision() {
     }
     bounceX() {
         this.speedX *= -1;

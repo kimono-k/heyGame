@@ -252,3 +252,17 @@ input[type="submit"] {
     cursor: pointer;
     border: 10px solid var(--secondary-color);
 }
+
+#breakout-image {
+    border-radius: 10px;
+    width: 400px;
+    cursor: pointer;
+    border: 10px solid var(--tertiary-color);
+}
+
+#breakout-image:hover {
+    border-radius: 100px;
+    width: 400px;
+    cursor: pointer;
+    border: 10px solid var(--tertiary-color);
+}

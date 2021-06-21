@@ -17,7 +17,7 @@ export class Paddle extends GameObject {
         this.speedX = 0
         this.speedY = 0;
         this.posX = 300
-        this.posY = 500
+        this.posY = 700
         this.scale = 1
 
         let touch = new TouchManager();

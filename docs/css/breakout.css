@@ -3,6 +3,10 @@
 body {
     max-height: 100%;
     overflow: hidden;
+
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 
@@ -27,6 +31,8 @@ ball {
 }
 
 brickgrid {
+    position: absolute;
+
     margin: 30px;
 
     display: grid;
@@ -56,4 +62,10 @@ brick {
     background-color: purple;
 
     background-image: url('../assets/img/breakout/brickPurple.png');
+}
+
+.dead {
+    background-color: #00000000;
+
+    background-image: url('');
 }

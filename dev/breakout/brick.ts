@@ -9,28 +9,38 @@ export class Brick extends GameObject{
     private itemtype : string
     private item : string
     private color : string
-    private breakstatus : number
+    public breakstatus : boolean = false
     private hidden : boolean
     private fallingItem : FallingItem
 
     // Properties
 
     // Constructor
-    constructor(row : number, column : number, breakstatus : number = 2, color : string = "blue", itemtype : string = "default", item : string, hidden : boolean = false) {
+    constructor(item : string) {
         super()
-        this.spawn()
+        this.item = item
+        this.spawn(item)
     }
+
+    // constructor(row : number, column : number, breakstatus : number = 2, color : string = "blue", itemtype : string = "default", item : string, hidden : boolean = false) {
+    //     super()
+    //     this.spawn()
+    // }
     
     // Functions
 
     // gameloop
     public update() : void {
-
+        super.update()
     }
 
     // general functions 
-    public spawn() : void {
-
+    public spawn(item : string) : void {
+        console.log("brick spawn")
+        this.element = document.createElement("brick");
+        let brickgrid = document.querySelector("brickgrid");
+        brickgrid.appendChild(this.element);
+        this.element.innerHTML = item
     }
 
     public reset() : void {
@@ -43,7 +53,9 @@ export class Brick extends GameObject{
     }
 
     public break() : void {
-
+        this.element.classList.add("dead")
+        this.element.innerHTML = ""
+        this.breakstatus = true
     }
 
     // global functions
