@@ -238,3 +238,17 @@ input[type="submit"] {
     background: var(--tertiary-color-light);
     box-shadow: 0 3px 13px rgba(0, 0, 0, 0.2);
 }
+
+#snake-image {
+    border-radius: 10px;
+    width: 400px;
+    cursor: pointer;
+    border: 10px solid var(--secondary-color);
+}
+
+#snake-image:hover {
+    border-radius: 100px;
+    width: 400px;
+    cursor: pointer;
+    border: 10px solid var(--secondary-color);
+}

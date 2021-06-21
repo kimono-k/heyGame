@@ -1,8 +1,9 @@
 @import "style.css";
 
 background {
-    z-index: -1;
-    background-image: url('../assets/img/snake/background.jpg');
+    z-index: -20;
+    /* background-image: url('../assets/img/snake/background.jpg'); */
+    background-color: var(--bg-color);
     background-position: bottom center;
     background-size: cover;
     width: 100vw;
@@ -20,6 +21,11 @@ snakeSegment {
 body {
     max-height: 100%;
     overflow: hidden;
+}
+
+game {
+    z-index: -30;
+    background-color: var(--primary-color);
 }
 
 .gameComp {

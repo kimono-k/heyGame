@@ -3,7 +3,7 @@ export class SoundManager {
     audioPlayer = new Audio();
 
     public playAudio(src: string) {
-        this.audioPlayer.src = `../assets/audio/general/${src}.wav`;
+        this.audioPlayer.src = `../assets/audio/general/${src.toLowerCase()}.wav`;
         this.audioPlayer.play();
     }
 }

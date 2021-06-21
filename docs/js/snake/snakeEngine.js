@@ -1,3 +1,4 @@
+import { GameComponent } from "./components/gameComponent.js";
 import { Letter } from "./components/letter.js";
 import { Segment } from "./components/segment.js";
 import { Vector } from "./math/vector.js";
@@ -16,7 +17,7 @@ export class SnakeEngine {
         this.paused = false;
         this.toGrow = false;
         this.toDie = false;
-        this.size = new Vector(12, 8);
+        this.size = new Vector(18, 12);
         this.segmentSize = 10;
         this.letters = [];
         this.letterPos = [];
@@ -29,8 +30,9 @@ export class SnakeEngine {
         this.inputType = inputType;
         document.getElementById('restartButton').addEventListener('click', () => { this.start(); });
         let screen = gameDiv.getBoundingClientRect();
-        let mult = Math.min(screen.width / 120, screen.height / 80);
+        let mult = Math.min(screen.width / 180, screen.height / 120);
         this.resMult = mult;
+        this.initBackground();
         this.touch.initListeners();
         this.touch.resMult = this.resMult;
         console.log('game constructed!');
@@ -72,6 +74,14 @@ export class SnakeEngine {
         for (let c of this.snakeDivs) {
             c.update();
         }
+    }
+    initBackground() {
+        let bg = new GameComponent('background');
+        let bgSize = this.size.multiply(this.segmentSize * this.resMult);
+        bg.size = bgSize;
+        bg.engine = this;
+        bg.updateDiv();
+        this.gameDiv.appendChild(bg.div);
     }
     movePos(touchPos) {
         let divRect = this.gameDiv.getBoundingClientRect();
@@ -127,7 +137,7 @@ export class SnakeEngine {
     createSnakeSegment(pos, unshift = false) {
         let snake = new Segment();
         snake.engine = this;
-        snake.size = new Vector(this.segmentSize, this.segmentSize);
+        snake.size = new Vector(this.segmentSize - 1, this.segmentSize - 1);
         if (unshift) {
             this.snakeDivs.unshift(snake);
             this.snakePos.unshift(pos);
@@ -163,9 +173,17 @@ export class SnakeEngine {
     }
     collideSnake() {
         let snakeHead = this.snakeTarget[this.snakeTarget.length - 1];
-        if (snakeHead.y < 0 || snakeHead.y >= this.h + 1 ||
-            snakeHead.x < 0 || snakeHead.x >= this.w) {
-            this.toDie = true;
+        if (snakeHead.y < -1) {
+            this.snakeTarget[this.snakeTarget.length - 1].y = this.h + 1;
+        }
+        else if (snakeHead.x < -1) {
+            this.snakeTarget[this.snakeTarget.length - 1].x = this.w + 1;
+        }
+        else if (snakeHead.y > this.h + 1) {
+            this.snakeTarget[this.snakeTarget.length - 1].y = -1;
+        }
+        else if (snakeHead.x > this.w + 1) {
+            this.snakeTarget[this.snakeTarget.length - 1].x = -1;
         }
         for (let i = 0; i < this.snakeTarget.length - 1; i++) {
             let segment = this.snakeTarget[i];

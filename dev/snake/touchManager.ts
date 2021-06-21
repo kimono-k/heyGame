@@ -108,4 +108,8 @@ export class TouchManager {
         this.justSwiped = false;
         this.justMoved = false;
     }
+
+    public get touchDown() {
+        return this.activeTracking;
+    }
 }
